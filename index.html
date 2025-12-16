@@ -1,311 +1,628 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MJÖLLNIR - Programmation CrossFit Élite</title>
-    <!-- Chargement de Tailwind CSS pour un style moderne et responsive -->
+    <title>Anthoni Perez - Coaching CrossFit Individuel</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        /* Configuration de base Tailwind pour un thème sombre et puissant */
-        :root {
-            --primary-color: #B91C1C; /* Rouge Profond/Crimson */
-            --secondary-color: #111827; /* Noir Profond */
-            --accent-color: #FBBF24; /* Or/Jaune Vif (Accès Rapide à l'énergie) */
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-            background-color: var(--secondary-color);
-            color: #E5E7EB; /* Texte principal en Gris Clair */
-        }
-        /* Style des boutons Call-to-Action */
-        .btn-cta {
-            @apply inline-flex items-center justify-center px-8 py-3 text-base font-bold leading-6 transition duration-150 ease-in-out bg-red-700 border border-transparent rounded-lg shadow-lg text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-600 focus:ring-opacity-50 transform hover:scale-105;
-        }
-        /* Style pour l'image de fond du Hero (Dark/High Contrast) */
-        #hero-section {
-            background-image: url('https://placehold.co/1920x800/111827/FBBF24/png?text=MJÖLLNIR+PROGRAMMING+ELITE'); 
-            background-size: cover;
-            background-position: center;
-        }
-        /* Styles pour les ancres de navigation */
-        .nav-link {
-            @apply text-gray-300 hover:text-accent-color transition duration-300 font-semibold;
-        }
-        /* Texte de la bannière sur l'image */
-        #hero-section h1, #hero-section p {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-        }
-        .text-accent {
-            color: var(--accent-color);
-        }
-        /* Style pour la zone de résultat de l'analyse */
-        #analysis-result {
-            white-space: pre-wrap; /* Preserve formatting from LLM response */
-            text-align: left;
-            padding: 1.5rem;
-            margin-top: 1.5rem;
-            border-radius: 0.5rem;
-            background-color: #1F2937; /* Plus clair que le background pour contraster */
-            border-left: 4px solid var(--accent-color);
-        }
-    </style>
-</head>
-<body class="bg-gray-900 text-white">
-
-    <!-- 1. HEADER & NAVIGATION (Fixe pour un accès rapide) -->
-    <header class="sticky top-0 z-10 bg-gray-800 shadow-xl border-b-2 border-red-700">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="#accueil" class="text-3xl font-extrabold text-accent tracking-wider">MJÖLLNIR PRO</a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#services" class="nav-link">Programmes</a>
-                <a href="#coach" class="nav-link">Stratège</a>
-                <a href="#temoignages" class="nav-link">Performance</a>
-                <a href="#analyse" class="nav-link text-accent">Analyse IA ✨</a> <!-- Lien vers la nouvelle section -->
-                <a href="#contact" class="btn-cta text-sm py-2 px-4 shadow-none bg-red-700 hover:bg-red-800">Démarrer</a>
-            </div>
-            <!-- Menu mobile simple (non fonctionnel pour garder le code simple) -->
-            <button class="md:hidden text-gray-300">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-        </nav>
-    </header>
-
-    <!-- 2. SECTION HERO (Accueil) -->
-    <section id="accueil" id="hero-section" class="flex items-center justify-center h-[80vh] text-white p-4">
-        <div class="text-center bg-gray-900 bg-opacity-70 p-12 rounded-xl max-w-5xl border-l-4 border-accent-color">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 uppercase tracking-tighter">
-                PROGRAMMATION <span class="text-red-600">STRATÉGIQUE</span> POUR ATTEINDRE L'ÉLITE
-            </h1>
-            <p class="text-xl md:text-2xl mb-10 font-light text-gray-300">
-                Coaching individuel affilié Mjöllnir. Nous construisons votre force et votre stratégie pour les compétitions et les performances maximales.
-            </p>
-            <a href="#analyse" class="btn-cta">
-                <span class="mr-2 text-accent">⚡</span> Analyser Ma Performance
-            </a>
-        </div>
-    </section>
-
-    <!-- 3. SECTION SERVICES (Les Offres - Piliers de Programmation) -->
-    <section id="services" class="py-16 md:py-24 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-extrabold text-center text-white mb-4">La Stratégie Mjöllnir</h2>
-            <p class="text-xl text-center text-gray-400 mb-16">Nous optimisons chaque cycle d'entraînement pour garantir votre progression.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Carte 1: Optimisation de la force -->
-                <div class="bg-gray-800 p-8 rounded-xl shadow-2xl hover:shadow-red-900 transition duration-300 border-t-4 border-accent-color">
-                    <div class="text-5xl text-accent mb-4">🏋️</div>
-                    <h3 class="text-2xl font-bold mb-3 text-white">Hyper-Spécificité Force</h3>
-                    <p class="text-gray-400">Des cycles de force basés sur des données, ajustant les volumes et les intensités pour briser les plateaux de PR.</p>
-                </div>
-
-                <!-- Carte 2: Gestion de la Fatigue -->
-                <div class="bg-gray-800 p-8 rounded-xl shadow-2xl hover:shadow-red-900 transition duration-300 border-t-4 border-accent-color">
-                    <div class="text-5xl text-accent mb-4">⚙️</div>
-                    <h3 class="text-2xl font-bold mb-3 text-white">Stratégie & Compétition</h3>
-                    <p class="text-gray-400">Apprentissage de la gestion des WODs multi-modalités, gestion du "pacing" et stratégies de transition en compétition.</p>
-                </div>
-
-                <!-- Carte 3: Évaluation et Correction -->
-                <div class="bg-gray-800 p-8 rounded-xl shadow-2xl hover:shadow-red-900 transition duration-300 border-t-4 border-accent-color">
-                    <div class="text-5xl text-accent mb-4">🔬</div>
-                    <h3 class="text-2xl font-bold mb-3 text-white">Analyse Biométrique</h3>
-                    <p class="text-gray-400">Évaluation des faiblesses techniques et des déséquilibres pour une prescription d'exercices correctifs précise et efficace.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. SECTION TÉMOIGNAGES (Preuve de Performance) -->
-    <section id="temoignages" class="py-16 md:py-24 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-extrabold text-center text-white mb-16">La Preuve par les Athlètes</h2>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Témoignage 1 -->
-                <blockquote class="bg-gray-900 p-6 rounded-lg shadow-xl border-l-4 border-red-700">
-                    <p class="text-lg italic text-gray-300">"La programmation Mjöllnir est un changement de jeu. J'ai gagné en capacité de travail et la stratégie de 'pacing' m'a propulsé au sommet du classement local."</p>
-                    <footer class="mt-4 font-bold text-accent">— Marc, Qualifié pour les Événements Nationaux</footer>
-                </blockquote>
-                <!-- Témoignage 2 -->
-                <blockquote class="bg-gray-900 p-6 rounded-lg shadow-xl border-l-4 border-red-700">
-                    <p class="text-lg italic text-gray-300">"J'ai toujours été bon en force, mais faible en endurance. L'analyse du coach a rééquilibré mon profil en seulement 4 mois. Des résultats concrets."</p>
-                    <footer class="mt-4 font-bold text-accent">— Léa, Athlète de niveau Intermédiaire</footer>
-                </blockquote>
-                 <!-- Témoignage 3 -->
-                <blockquote class="bg-gray-900 p-6 rounded-lg shadow-xl border-l-4 border-red-700">
-                    <p class="text-lg italic text-gray-300">"Ce n'est pas juste du coaching, c'est de la stratégie. J'ai appris à m'entraîner plus intelligemment, pas seulement plus fort."</p>
-                    <footer class="mt-4 font-bold text-accent">— Thomas, Ex-Compétiteur</footer>
-                </blockquote>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. SECTION COACH (Crédibilité) -->
-    <section id="coach" class="py-16 md:py-24 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-extrabold text-center text-white mb-12">Votre Stratège de Performance</h2>
-            <div class="md:flex items-center justify-center space-y-8 md:space-y-0 md:space-x-12">
-                <!-- Placeholder Image -->
-                <div class="flex-shrink-0">
-                    <img class="w-64 h-64 object-cover rounded-full shadow-2xl border-4 border-accent-color mx-auto" 
-                         src="https://placehold.co/256x256/1F2937/FBBF24?text=Coach" 
-                         alt="Photo du coach professionnel">
-                </div>
-                <!-- Description -->
-                <div class="max-w-2xl text-center md:text-left">
-                    <h3 class="text-3xl font-bold text-white mb-3">Alexandre "Le Stratège" Dubois</h3>
-                    <p class="text-lg text-gray-300 mb-4">
-                        <span class="font-semibold text-red-600">Coach Principal Affilié Mjöllnir,</span> Level 3 Trainer (CF-L3), Expert en Programmation et Gestion du Volume.
-                    </p>
-                    <p class="text-gray-400">
-                        Mon rôle est de traduire les principes de l'élite de la programmation Mjöllnir à votre niveau individuel. Nous maximiserons les gains tout en gérant la fatigue et en optimisant vos cycles de compétition. Votre succès est une question de planification.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
     
-    <!-- 6. ANALYSE STRATÉGIQUE IA (Gemini API Feature) -->
-    <section id="analyse" class="py-16 md:py-24 bg-gray-800 border-t-2 border-red-700">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-extrabold text-white mb-4">Analyse Stratégique Instantanée ✨</h2>
-            <p class="text-xl text-gray-300 mb-8">
-                Décrivez votre situation actuelle (points forts, faiblesses, objectifs pour les 6 prochains mois). Notre IA vous fournira une première piste de programmation.
-            </p>
+    <!-- Icônes Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-            <textarea id="athlete-input" 
-                      class="w-full h-32 p-4 rounded-lg bg-gray-700 text-white border border-gray-600 focus:ring-red-700 focus:border-red-700 mb-6"
-                      placeholder="Ex: Mon PR en Snatch est de 80kg, mais mon endurance sur les WODs longs est ma plus grande faiblesse. Je vise une qualification à l'Open."
-                      required></textarea>
-            
-            <button id="analyze-button" class="btn-cta bg-accent-color text-gray-900 hover:bg-yellow-400">
-                <span class="mr-2">🚀</span> Générer l'Analyse Mjöllnir
-            </button>
-            
-            <div id="loading-indicator" class="mt-4 text-accent hidden">
-                Analyse en cours... Notre IA évalue votre stratégie.
-            </div>
-
-            <div id="analysis-result" class="text-gray-200 hidden">
-                <!-- Le résultat de l'API Gemini sera injecté ici -->
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. FOOTER & CALL TO ACTION FINAL (Contact/Réservation) -->
-    <footer id="contact" class="py-16 bg-gray-900 text-white border-t-2 border-red-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-extrabold text-white mb-4">Passez à la Programmation Individuelle</h2>
-            <p class="text-xl text-gray-300 mb-10">Réservez votre bilan technique approfondi avec le Coach Alexandre. Place limitée.</p>
-            
-            <!-- CTA vers un système de réservation externe (Calendly, etc.) -->
-            <a href="#lien-reservation-externe" class="btn-cta bg-red-700 hover:bg-red-800">
-                <span class="mr-2">⚔️</span> Je Réserve mon Bilan Stratégique
-            </a>
-
-            <!-- Informations de contact simples -->
-            <div class="mt-12 text-gray-400 text-sm space-y-2">
-                <p>Affilié à la programmation Mjöllnir. | Email: contact@mjollnirpro.com</p>
-                <p>Téléphone: +33 6 00 00 00 00</p>
-                <p class="pt-4">&copy; 2025 MJÖLLNIR PRO Coaching. Tous droits réservés.</p>
-            </div>
-        </div>
-    </footer>
-    
+    <!-- Configuration Tailwind personnalisée pour les couleurs -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const analyzeButton = document.getElementById('analyze-button');
-            const inputField = document.getElementById('athlete-input');
-            const resultDiv = document.getElementById('analysis-result');
-            const loadingIndicator = document.getElementById('loading-indicator');
-            
-            // Constantes de l'API Gemini
-            const apiKey = ""; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-
-            // Fonction pour l'appel API avec Backoff exponentiel
-            async function fetchWithExponentialBackoff(payload, maxRetries = 5) {
-                for (let attempt = 0; attempt < maxRetries; attempt++) {
-                    try {
-                        const response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-
-                        if (response.status === 429 && attempt < maxRetries - 1) {
-                            // Too Many Requests (429), retry after a delay
-                            const delay = Math.pow(2, attempt) * 1000 + Math.random() * 1000;
-                            await new Promise(resolve => setTimeout(resolve, delay));
-                            continue;
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#151e2e', // Un gris un peu plus profond
+                            950: '#020617',
                         }
-                        
-                        if (!response.ok) {
-                             throw new Error(\`HTTP error! status: \${response.status}\`);
-                        }
-
-                        return response.json();
-
-                    } catch (error) {
-                         // Only retry on network errors or 429
-                         if (attempt === maxRetries - 1) {
-                            throw error;
-                         }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
+        }
+    </script>
+    
+    <style>
+        /* Ajustements pour la barre de défilement */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #dc2626;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-300 bg-slate-900 selection:bg-red-600 selection:text-white antialiased">
 
-            analyzeButton.addEventListener('click', async () => {
-                const userQuery = inputField.value.trim();
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-black text-white italic tracking-tighter flex items-center gap-2 group">
+                <i data-lucide="dumbbell" class="text-red-600 transform group-hover:rotate-12 transition-transform"></i>
+                ANTHONI<span class="text-red-600">PEREZ</span>
+            </a>
 
-                if (userQuery.length < 20) {
-                    resultDiv.textContent = "Veuillez fournir plus de détails sur vos performances et objectifs (minimum 20 caractères).";
-                    resultDiv.classList.remove('hidden');
-                    return;
-                }
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex gap-8 items-center font-semibold text-sm uppercase tracking-wide">
+                <a href="#a-propos" class="hover:text-red-500 transition-colors">À propos</a>
+                <a href="#services" class="hover:text-red-500 transition-colors">Services</a>
+                <a href="#temoignages" class="hover:text-red-500 transition-colors">Témoignages</a>
+                <a href="#tarifs" class="hover:text-red-500 transition-colors">Tarifs</a>
+                <a href="#contact" class="bg-red-600 text-white hover:bg-red-700 shadow-lg shadow-red-600/20 px-6 py-2 rounded-md transition-all duration-300 transform hover:-translate-y-1 ml-4">
+                    Commencer
+                </a>
+            </div>
 
-                // Afficher le chargement
-                resultDiv.classList.add('hidden');
-                loadingIndicator.classList.remove('hidden');
-                analyzeButton.disabled = true;
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                <i data-lucide="menu" id="menu-icon"></i>
+            </button>
+        </div>
 
-                // Le prompt système définit le rôle du modèle
-                const systemPrompt = "Vous êtes un stratège de programmation CrossFit élite affilié à Mjöllnir. Analysez le besoin de l'athlète et fournissez une analyse concise et structurée en français. Le ton doit être professionnel, technique et motivant. Formatez la réponse avec des titres en gras, des listes et des sauts de ligne pour la lisibilité. Ne donnez pas de programme complet, mais des axes d'amélioration stratégiques.";
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-slate-900 border-t border-slate-800 p-6 flex-col gap-6 shadow-xl">
+            <a href="#a-propos" class="text-lg font-bold hover:text-red-500 uppercase mobile-link">À propos</a>
+            <a href="#services" class="text-lg font-bold hover:text-red-500 uppercase mobile-link">Services</a>
+            <a href="#temoignages" class="text-lg font-bold hover:text-red-500 uppercase mobile-link">Témoignages</a>
+            <a href="#tarifs" class="text-lg font-bold hover:text-red-500 uppercase mobile-link">Tarifs</a>
+            <a href="#contact" class="text-lg font-bold text-red-500 uppercase mobile-link">Commencer</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://images.unsplash.com/photo-1517963879466-e1b54ebd99fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                alt="Crossfit Gym Background" 
+                class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/60"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 pt-20">
+            <div class="max-w-3xl">
+                <div class="inline-block bg-red-600/20 text-red-500 font-bold px-4 py-2 rounded-full text-sm mb-6 border border-red-600/30 backdrop-blur-sm">
+                    COACHING INDIVIDUEL EN LIGNE
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-none italic">
+                    DÉCLASSEZ <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-600">
+                        VOS LIMITES.
+                    </span>
+                </h1>
+                <p class="text-xl text-slate-300 mb-10 max-w-2xl leading-relaxed">
+                    Arrêtez de vous entraîner au hasard. Bénéficiez d'une programmation structurée et d'un coach dédié pour exploser vos PRs et transformer votre physique.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#services" class="px-8 py-4 bg-red-600 text-white rounded-md font-bold hover:bg-red-700 shadow-lg shadow-red-600/20 transition-all transform hover:-translate-y-1 text-center uppercase tracking-wider">
+                        Découvrir les programmes
+                    </a>
+                    <a href="#contact" class="px-8 py-4 border-2 border-white text-white rounded-md font-bold hover:bg-white hover:text-slate-900 transition-all transform hover:-translate-y-1 text-center uppercase tracking-wider">
+                        Bilan gratuit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Section -->
+    <section class="relative z-20 -mt-10 px-4 md:px-0">
+        <div class="container mx-auto">
+            <div class="bg-red-600 py-10 rounded-lg shadow-2xl mx-auto md:mx-20">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white divide-x divide-white/20">
+                    <div>
+                        <div class="text-4xl font-black">50+</div>
+                        <div class="text-sm uppercase font-medium opacity-90">Athlètes suivis</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-black">100%</div>
+                        <div class="text-sm uppercase font-medium opacity-90">Personnalisé</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-black">7/7</div>
+                        <div class="text-sm uppercase font-medium opacity-90">Disponibilité</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-black">L1</div>
+                        <div class="text-sm uppercase font-medium opacity-90">CrossFit Trainer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="a-propos" class="py-24 bg-slate-900">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2 relative">
+                    <div class="absolute -inset-4 border-2 border-red-600 rounded-lg transform translate-x-4 translate-y-4 hidden md:block"></div>
+                    <img 
+                        src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="Coach Anthoni Perez" 
+                        class="rounded-lg shadow-2xl relative z-10 w-full grayscale hover:grayscale-0 transition-all duration-500"
+                    />
+                </div>
+                <div class="md:w-1/2">
+                    <div class="mb-8 text-left">
+                        <span class="text-red-500 font-bold tracking-widest uppercase text-sm">Le Coach</span>
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 leading-tight">
+                            Plus qu'un programme, un partenaire.
+                        </h2>
+                        <div class="h-1 w-20 bg-red-600 mt-4"></div>
+                    </div>
+                    
+                    <p class="text-lg mb-6 leading-relaxed">
+                        Je m'appelle <strong>Anthoni Perez</strong>. Passionné de préparation physique et pratiquant de CrossFit depuis plus de 6 ans, j'ai constaté que trop d'athlètes stagnent ou se blessent à cause d'une programmation générique.
+                    </p>
+                    <p class="text-lg mb-8 leading-relaxed">
+                        Mon approche est basée sur l'individualisation. Que tu sois débutant cherchant à maîtriser les bases ou compétiteur visant les quarts de finale, je construis le chemin le plus efficace vers <strong>tes</strong> objectifs.
+                    </p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3">
+                            <div class="bg-red-600/20 p-1 rounded-full text-red-500">
+                                <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+                            </div>
+                            <span class="font-medium">Adaptation à ton équipement (Home Gym ou Box)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="bg-red-600/20 p-1 rounded-full text-red-500">
+                                <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+                            </div>
+                            <span class="font-medium">Prévention des blessures</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="bg-red-600/20 p-1 rounded-full text-red-500">
+                                <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+                            </div>
+                            <span class="font-medium">Développement de la force et de la gymnastique</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-slate-800">
+        <div class="container mx-auto px-6">
+            <!-- Title -->
+            <div class="mb-12 text-center">
+                <span class="text-red-500 font-bold tracking-widest uppercase text-sm">Méthodologie</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 leading-tight">Comment nous allons progresser</h2>
+                <div class="h-1 w-20 bg-red-600 mt-4 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 hover:border-red-600 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="mb-6 text-red-500 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="calendar" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Programmation Sur-Mesure</h3>
+                    <p class="text-slate-400 leading-relaxed text-sm">
+                        Fini le hasard. Reçois chaque semaine un plan d'entraînement adapté à tes faiblesses, ton matériel et ton emploi du temps.
+                    </p>
+                </div>
                 
-                // Le prompt utilisateur combine l'instruction et l'entrée utilisateur
-                const fullPrompt = `Analyse de performance pour athlète CrossFit:\n\nMon profil et mes objectifs:\n${userQuery}`;
+                <!-- Service 2 -->
+                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 hover:border-red-600 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="mb-6 text-red-500 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="video" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Analyse Vidéo Technique</h3>
+                    <p class="text-slate-400 leading-relaxed text-sm">
+                        Envoie tes vidéos de mouvements (Clean, Snatch, Gym). Je les analyse et te donne des correctifs précis pour progresser.
+                    </p>
+                </div>
 
-                const payload = {
-                    contents: [{ parts: [{ text: fullPrompt }] }],
-                    systemInstruction: { parts: [{ text: systemPrompt }] },
-                };
+                <!-- Service 3 -->
+                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 hover:border-red-600 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="mb-6 text-red-500 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="utensils" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Suivi Nutritionnel</h3>
+                    <p class="text-slate-400 leading-relaxed text-sm">
+                        La performance passe par l'assiette. Stratégie de macros adaptée à tes objectifs (perte de gras, prise de masse ou perf).
+                    </p>
+                </div>
 
-                try {
-                    const result = await fetchWithExponentialBackoff(payload);
-                    const generatedText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                <!-- Service 4 -->
+                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 hover:border-red-600 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="mb-6 text-red-500 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="trophy" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Préparation Compétition</h3>
+                    <p class="text-slate-400 leading-relaxed text-sm">
+                        Peaking, stratégie de WOD et préparation mentale pour arriver prêt le jour J (Opens, Throws, etc.).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    if (generatedText) {
-                        // Nettoyer le texte pour l'affichage (remplacer les sauts de ligne pour les insérer en HTML)
-                        resultDiv.textContent = generatedText;
-                    } else {
-                        resultDiv.textContent = "Erreur: Impossible d'obtenir une analyse. Veuillez réessayer.";
-                    }
-                } catch (error) {
-                    console.error("Gemini API Error:", error);
-                    resultDiv.textContent = "Erreur de connexion avec l'API. Veuillez vérifier votre réseau ou réessayer plus tard.";
-                } finally {
-                    // Masquer le chargement et afficher le résultat
-                    loadingIndicator.classList.add('hidden');
-                    resultDiv.classList.remove('hidden');
-                    analyzeButton.disabled = false;
-                }
+    <!-- Testimonials Section -->
+    <section id="temoignages" class="py-24 bg-slate-900 relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Title -->
+            <div class="mb-12 text-center">
+                <span class="text-red-500 font-bold tracking-widest uppercase text-sm">Témoignages</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 leading-tight">Ils ont transformé leur fitness</h2>
+                <div class="h-1 w-20 bg-red-600 mt-4 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700/50">
+                    <div class="flex gap-1 mb-4 text-yellow-500">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-slate-300 italic mb-6">"Depuis que je suis la prog d'Anthoni, j'ai pris 15kg sur mon Back Squat et j'ai enfin passé mes premiers Muscle Ups. Une structure qui change tout."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center font-bold text-white">T</div>
+                        <div>
+                            <h4 class="font-bold text-white">Thomas D.</h4>
+                            <span class="text-xs text-red-500 uppercase tracking-wide">Athlète Intermédiaire</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700/50">
+                    <div class="flex gap-1 mb-4 text-yellow-500">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-slate-300 italic mb-6">"Avec un emploi du temps chargé, Anthoni a su adapter le volume. Je progresse constamment sans me sentir dépassée. Le suivi est top !"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center font-bold text-white">S</div>
+                        <div>
+                            <h4 class="font-bold text-white">Sarah L.</h4>
+                            <span class="text-xs text-red-500 uppercase tracking-wide">Maman & CrossFiteuse</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700/50">
+                    <div class="flex gap-1 mb-4 text-yellow-500">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-slate-300 italic mb-6">"L'analyse vidéo est bluffante. Il voit des détails que je n'avais jamais remarqués. Mon snatch est devenu beaucoup plus fluide."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center font-bold text-white">J</div>
+                        <div>
+                            <h4 class="font-bold text-white">Julien M.</h4>
+                            <span class="text-xs text-red-500 uppercase tracking-wide">Compétiteur</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="tarifs" class="py-24 bg-slate-800">
+        <div class="container mx-auto px-6">
+            <!-- Title -->
+            <div class="mb-12 text-center">
+                <span class="text-red-500 font-bold tracking-widest uppercase text-sm">Investissement</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 leading-tight">Choisis ton niveau d'accompagnement</h2>
+                <div class="h-1 w-20 bg-red-600 mt-4 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row justify-center items-stretch gap-8 max-w-5xl mx-auto">
+                
+                <!-- Plan Performance -->
+                <div class="flex-1 bg-slate-900 border border-slate-700 rounded-2xl p-8 md:p-12 relative flex flex-col hover:border-slate-500 transition-colors">
+                    <h3 class="text-2xl font-bold text-white mb-2">Performance</h3>
+                    <div class="flex items-baseline mb-8">
+                        <span class="text-5xl font-black text-white">89€</span>
+                        <span class="text-slate-400 ml-2">/mois</span>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-10 flex-1">
+                        <li class="flex items-start gap-3 text-slate-300 text-sm">
+                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                            Programmation 100% personnalisée
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-300 text-sm">
+                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                            3 à 5 séances par semaine
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-300 text-sm">
+                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                            Feedback vidéo hebdomadaire
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-300 text-sm">
+                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                            Ajustements illimités
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-300 text-sm">
+                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                            Support WhatsApp 7j/7
+                        </li>
+                    </ul>
+                    
+                    <a href="#contact" class="w-full block text-center border-2 border-white text-white py-3 rounded-md font-bold hover:bg-white hover:text-slate-900 transition-all uppercase tracking-wider">
+                        Choisir Performance
+                    </a>
+                </div>
+
+                <!-- Plan Elite -->
+                <div class="flex-1 bg-gradient-to-b from-slate-700 to-slate-800 border-2 border-red-600 rounded-2xl p-8 md:p-12 relative flex flex-col transform lg:-translate-y-4 shadow-2xl shadow-red-900/20">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest shadow-lg">
+                        Recommandé
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-white mb-2">Elite</h3>
+                    <div class="flex items-baseline mb-8">
+                        <span class="text-5xl font-black text-white">129€</span>
+                        <span class="text-slate-400 ml-2">/mois</span>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-10 flex-1">
+                        <li class="flex items-start gap-3 text-slate-300 text-sm">
+                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                            <strong>Tout du pack Performance</strong>
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-300 text-sm">
+                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                            Suivi Nutritionnel complet
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-300 text-sm">
+                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                            Appels de coaching mensuels
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-300 text-sm">
+                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                            Stratégie de compétition
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-300 text-sm">
+                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                            Analyse vidéo illimitée
+                        </li>
+                    </ul>
+                    
+                    <a href="#contact" class="w-full block text-center bg-red-600 text-white py-3 rounded-md font-bold hover:bg-red-700 shadow-lg shadow-red-600/20 transition-all uppercase tracking-wider transform hover:-translate-y-1">
+                        Choisir Elite
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-slate-900">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+                
+                <!-- Contact Info Side -->
+                <div class="md:w-2/5 bg-red-600 p-10 text-white flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Prêt à commencer ?</h3>
+                        <p class="text-red-100 mb-8 leading-relaxed">
+                            Remplis ce formulaire pour réserver ton appel de bilan gratuit. Nous discuterons de tes objectifs et de la meilleure stratégie pour les atteindre.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <i data-lucide="mail" class="opacity-80"></i>
+                                <span class="font-medium">contact@anthoniperez.com</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <i data-lucide="instagram" class="opacity-80"></i>
+                                <span class="font-medium">@anthoni.perez_coach</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 hidden md:block">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-lg">
+                            <i data-lucide="dumbbell" class="text-white w-8 h-8"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Side -->
+                <div class="md:w-3/5 p-10 relative">
+                    <!-- Success Message (Hidden by default) -->
+                    <div id="success-message" class="hidden absolute inset-0 bg-slate-800 flex-col items-center justify-center text-center p-10 z-10 rounded-r-3xl">
+                        <div class="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mb-6 animate-bounce">
+                            <i data-lucide="check" class="w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Message envoyé !</h3>
+                        <p class="text-slate-400">Anthoni te recontactera sous 24h.</p>
+                    </div>
+
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="col-span-2 md:col-span-1">
+                                <label class="block text-xs font-bold uppercase text-slate-400 mb-2">Prénom</label>
+                                <input type="text" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="Ton prénom" />
+                            </div>
+                            <div class="col-span-2 md:col-span-1">
+                                <label class="block text-xs font-bold uppercase text-slate-400 mb-2">Nom</label>
+                                <input type="text" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="Ton nom" />
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-2">Email</label>
+                            <input type="email" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="ton.email@exemple.com" />
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-2">Objectif Principal</label>
+                            <div class="relative">
+                                <select class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors appearance-none">
+                                    <option>Performance (Compétition)</option>
+                                    <option>Prise de force</option>
+                                    <option>Gymnastique</option>
+                                    <option>Remise en forme / Santé</option>
+                                    <option>Autre</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white">
+                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-2">Message (Optionnel)</label>
+                            <textarea rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="Parle-moi de ton expérience en CrossFit..."></textarea>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="w-full flex items-center justify-center gap-2 bg-red-600 text-white px-6 py-3 rounded-md font-bold hover:bg-red-700 shadow-lg shadow-red-600/20 transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider">
+                           <span>Envoyer ma demande</span>
+                           <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-12 border-t border-slate-900">
+        <div class="container mx-auto px-6 text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-xl font-black text-white italic tracking-tighter flex items-center justify-center md:justify-start gap-2 mb-2">
+                        <i data-lucide="dumbbell" class="text-red-600 w-6 h-6"></i>
+                        ANTHONI<span class="text-red-600">PEREZ</span>
+                    </div>
+                    <p class="text-slate-500 text-sm">Coaching CrossFit & Préparation Physique</p>
+                </div>
+                
+                <div class="flex gap-6 mb-6 md:mb-0">
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="mail"></i></a>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-900 mt-8 pt-8 flex flex-col md:flex-row justify-between text-slate-600 text-xs">
+                <p>&copy; 2024 Anthoni Perez Coaching. Tous droits réservés.</p>
+                <div class="flex gap-4 justify-center md:justify-start mt-4 md:mt-0">
+                    <a href="#" class="hover:text-slate-400">Mentions Légales</a>
+                    <a href="#" class="hover:text-slate-400">CGV</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts JS -->
+    <script>
+        // 1. Initialiser les icônes Lucide
+        lucide.createIcons();
+
+        // 2. Gestion de la Navbar Sticky
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-slate-900/95', 'backdrop-blur-md', 'shadow-lg', 'py-4');
+                navbar.classList.remove('py-6');
+            } else {
+                navbar.classList.remove('bg-slate-900/95', 'backdrop-blur-md', 'shadow-lg', 'py-4');
+                navbar.classList.add('py-6');
+            }
+        });
+
+        // 3. Menu Mobile Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons(); // Rafraîchir l'icône
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+
+        // Fermer le menu au clic sur un lien
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(isMenuOpen) toggleMenu();
             });
         });
-    </script>
 
+        // 4. Gestion du Formulaire (Simulation)
+        const form = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = submitBtn.querySelector('span');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // État chargement
+            btnText.textContent = 'Envoi en cours...';
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            
+            // Simulation délai réseau
+            setTimeout(() => {
+                form.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+                successMessage.classList.add('flex');
+                
+                // Reset après 5 secondes (pour démo)
+                setTimeout(() => {
+                    form.reset();
+                    form.classList.remove('hidden');
+                    successMessage.classList.add('hidden');
+                    successMessage.classList.remove('flex');
+                    btnText.textContent = 'Envoyer ma demande';
+                    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                }, 5000);
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
