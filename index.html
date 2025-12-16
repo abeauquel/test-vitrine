@@ -8,22 +8,29 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Google Fonts: Oswald (Titres) & Montserrat (Corps) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <!-- Icônes Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Configuration Tailwind personnalisée pour les couleurs -->
+    <!-- Configuration Tailwind personnalisée -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        slate: {
-                            850: '#151e2e', // Un gris un peu plus profond
-                            950: '#020617',
+                        brand: {
+                            gold: '#C5A059', // Couleur dorée type Mjollnir
+                            dark: '#050505', // Noir quasi pur
+                            panel: '#111111', // Gris très sombre pour les cartes
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                        header: ['Oswald', 'sans-serif'],
                     }
                 }
             }
@@ -31,57 +38,66 @@
     </script>
     
     <style>
-        /* Ajustements pour la barre de défilement */
+        /* Ajustements globaux */
+        body {
+            background-color: #000000;
+        }
+        h1, h2, h3, h4, h5, h6, .font-header {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+        
+        /* Barre de défilement custom */
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0f172a;
+            background: #000;
         }
         ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 5px;
+            background: #333;
+            border-radius: 0px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #dc2626;
+            background: #C5A059;
         }
     </style>
 </head>
-<body class="font-sans text-slate-300 bg-slate-900 selection:bg-red-600 selection:text-white antialiased">
+<body class="font-sans text-gray-400 bg-black selection:bg-brand-gold selection:text-black antialiased">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 border-b border-transparent">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <!-- Logo -->
-            <a href="#" class="text-2xl font-black text-white italic tracking-tighter flex items-center gap-2 group">
-                <i data-lucide="dumbbell" class="text-red-600 transform group-hover:rotate-12 transition-transform"></i>
-                ANTHONI<span class="text-red-600">PEREZ</span>
+            <a href="#" class="text-2xl font-header font-bold text-white tracking-widest flex items-center gap-2 group">
+                <i data-lucide="dumbbell" class="text-brand-gold w-6 h-6 transform group-hover:rotate-12 transition-transform"></i>
+                ANTHONI<span class="text-brand-gold">PEREZ</span>
             </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex gap-8 items-center font-semibold text-sm uppercase tracking-wide">
-                <a href="#a-propos" class="hover:text-red-500 transition-colors">À propos</a>
-                <a href="#services" class="hover:text-red-500 transition-colors">Services</a>
-                <a href="#temoignages" class="hover:text-red-500 transition-colors">Témoignages</a>
-                <a href="#tarifs" class="hover:text-red-500 transition-colors">Tarifs</a>
-                <a href="#contact" class="bg-red-600 text-white hover:bg-red-700 shadow-lg shadow-red-600/20 px-6 py-2 rounded-md transition-all duration-300 transform hover:-translate-y-1 ml-4">
+            <div class="hidden md:flex gap-8 items-center font-header font-medium text-sm tracking-widest text-gray-300">
+                <a href="#a-propos" class="hover:text-brand-gold transition-colors">À propos</a>
+                <a href="#services" class="hover:text-brand-gold transition-colors">Services</a>
+                <a href="#temoignages" class="hover:text-brand-gold transition-colors">Témoignages</a>
+                <a href="#tarifs" class="hover:text-brand-gold transition-colors">Tarifs</a>
+                <a href="#contact" class="bg-brand-gold text-black font-bold hover:bg-white px-6 py-2 transition-all duration-300 transform hover:-translate-y-1 ml-4 clip-path-slant">
                     Commencer
                 </a>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none hover:text-brand-gold transition-colors">
                 <i data-lucide="menu" id="menu-icon"></i>
             </button>
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-slate-900 border-t border-slate-800 p-6 flex-col gap-6 shadow-xl">
-            <a href="#a-propos" class="text-lg font-bold hover:text-red-500 uppercase mobile-link">À propos</a>
-            <a href="#services" class="text-lg font-bold hover:text-red-500 uppercase mobile-link">Services</a>
-            <a href="#temoignages" class="text-lg font-bold hover:text-red-500 uppercase mobile-link">Témoignages</a>
-            <a href="#tarifs" class="text-lg font-bold hover:text-red-500 uppercase mobile-link">Tarifs</a>
-            <a href="#contact" class="text-lg font-bold text-red-500 uppercase mobile-link">Commencer</a>
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-black border-t border-gray-900 p-6 flex-col gap-6 shadow-2xl">
+            <a href="#a-propos" class="text-xl font-header font-bold text-white hover:text-brand-gold mobile-link">À propos</a>
+            <a href="#services" class="text-xl font-header font-bold text-white hover:text-brand-gold mobile-link">Services</a>
+            <a href="#temoignages" class="text-xl font-header font-bold text-white hover:text-brand-gold mobile-link">Témoignages</a>
+            <a href="#tarifs" class="text-xl font-header font-bold text-white hover:text-brand-gold mobile-link">Tarifs</a>
+            <a href="#contact" class="text-xl font-header font-bold text-brand-gold mobile-link">Commencer</a>
         </div>
     </nav>
 
@@ -90,111 +106,105 @@
         <!-- Background Image -->
         <div class="absolute inset-0 z-0">
             <img 
-                src="https://images.unsplash.com/photo-1517963879466-e1b54ebd99fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
-                alt="Crossfit Gym Background" 
-                class="w-full h-full object-cover"
+                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                alt="Gym Background Dark" 
+                class="w-full h-full object-cover grayscale brightness-50"
             />
-            <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/60"></div>
+            <!-- Gradient Overlay très sombre -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black"></div>
         </div>
 
-        <div class="container mx-auto px-6 relative z-10 pt-20">
-            <div class="max-w-3xl">
-                <div class="inline-block bg-red-600/20 text-red-500 font-bold px-4 py-2 rounded-full text-sm mb-6 border border-red-600/30 backdrop-blur-sm">
-                    COACHING INDIVIDUEL EN LIGNE
+        <div class="container mx-auto px-6 relative z-10 pt-20 text-center md:text-left">
+            <div class="max-w-4xl mx-auto md:mx-0">
+                <div class="inline-block border border-brand-gold/50 text-brand-gold font-header font-bold px-4 py-1 mb-6 text-sm tracking-[0.2em] bg-black/50 backdrop-blur-sm">
+                    COACHING INDIVIDUEL & PROGRAMMATION
                 </div>
-                <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-none italic">
-                    DÉCLASSEZ <br />
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-600">
-                        VOS LIMITES.
+                <h1 class="text-5xl md:text-8xl font-header font-bold text-white mb-6 leading-none">
+                    FORGE <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-200">
+                        TON HÉRITAGE.
                     </span>
                 </h1>
-                <p class="text-xl text-slate-300 mb-10 max-w-2xl leading-relaxed">
-                    Arrêtez de vous entraîner au hasard. Bénéficiez d'une programmation structurée et d'un coach dédié pour exploser vos PRs et transformer votre physique.
+                <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl leading-relaxed font-light mx-auto md:mx-0">
+                    Arrête l'aléatoire. Adopte une méthode éprouvée. Programmation sur-mesure pour athlètes déterminés.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#services" class="px-8 py-4 bg-red-600 text-white rounded-md font-bold hover:bg-red-700 shadow-lg shadow-red-600/20 transition-all transform hover:-translate-y-1 text-center uppercase tracking-wider">
-                        Découvrir les programmes
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#services" class="px-8 py-4 bg-brand-gold text-black font-header font-bold text-lg hover:bg-white transition-all transform hover:-translate-y-1 text-center tracking-widest border border-brand-gold">
+                        VOIR LES PROGRAMMES
                     </a>
-                    <a href="#contact" class="px-8 py-4 border-2 border-white text-white rounded-md font-bold hover:bg-white hover:text-slate-900 transition-all transform hover:-translate-y-1 text-center uppercase tracking-wider">
-                        Bilan gratuit
+                    <a href="#contact" class="px-8 py-4 bg-transparent border border-white text-white font-header font-bold text-lg hover:border-brand-gold hover:text-brand-gold transition-all transform hover:-translate-y-1 text-center tracking-widest">
+                        BILAN OFFERT
                     </a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Stats Section -->
-    <section class="relative z-20 -mt-10 px-4 md:px-0">
-        <div class="container mx-auto">
-            <div class="bg-red-600 py-10 rounded-lg shadow-2xl mx-auto md:mx-20">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white divide-x divide-white/20">
-                    <div>
-                        <div class="text-4xl font-black">50+</div>
-                        <div class="text-sm uppercase font-medium opacity-90">Athlètes suivis</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-black">100%</div>
-                        <div class="text-sm uppercase font-medium opacity-90">Personnalisé</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-black">7/7</div>
-                        <div class="text-sm uppercase font-medium opacity-90">Disponibilité</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-black">L1</div>
-                        <div class="text-sm uppercase font-medium opacity-90">CrossFit Trainer</div>
-                    </div>
+    <!-- Stats Section (Noir sur Noir avec bordures) -->
+    <section class="relative z-20 bg-black border-y border-gray-900 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x-0 md:divide-x divide-gray-800">
+                <div class="p-4">
+                    <div class="text-5xl font-header font-bold text-white mb-2">50+</div>
+                    <div class="text-xs text-brand-gold tracking-[0.2em] font-bold">ATHLÈTES</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-5xl font-header font-bold text-white mb-2">100%</div>
+                    <div class="text-xs text-brand-gold tracking-[0.2em] font-bold">SUR-MESURE</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-5xl font-header font-bold text-white mb-2">24/7</div>
+                    <div class="text-xs text-brand-gold tracking-[0.2em] font-bold">SUPPORT</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-5xl font-header font-bold text-white mb-2">L1</div>
+                    <div class="text-xs text-brand-gold tracking-[0.2em] font-bold">TRAINER</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="a-propos" class="py-24 bg-slate-900">
+    <section id="a-propos" class="py-24 bg-brand-dark">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center gap-16">
-                <div class="md:w-1/2 relative">
-                    <div class="absolute -inset-4 border-2 border-red-600 rounded-lg transform translate-x-4 translate-y-4 hidden md:block"></div>
+                <!-- Image avec effet "Or" -->
+                <div class="md:w-1/2 relative group">
+                    <div class="absolute inset-0 border-2 border-brand-gold transform translate-x-3 translate-y-3 transition-transform group-hover:translate-x-2 group-hover:translate-y-2"></div>
                     <img 
                         src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                         alt="Coach Anthoni Perez" 
-                        class="rounded-lg shadow-2xl relative z-10 w-full grayscale hover:grayscale-0 transition-all duration-500"
+                        class="relative z-10 w-full grayscale contrast-125 brightness-90"
                     />
                 </div>
+                
                 <div class="md:w-1/2">
                     <div class="mb-8 text-left">
-                        <span class="text-red-500 font-bold tracking-widest uppercase text-sm">Le Coach</span>
-                        <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 leading-tight">
-                            Plus qu'un programme, un partenaire.
+                        <span class="text-brand-gold font-header font-bold tracking-[0.2em] text-sm block mb-2">LE COACH</span>
+                        <h2 class="text-4xl md:text-5xl font-header font-bold text-white leading-tight">
+                            PLUS QU'UN PROGRAMME,<br>UNE DISCIPLINE.
                         </h2>
-                        <div class="h-1 w-20 bg-red-600 mt-4"></div>
                     </div>
                     
-                    <p class="text-lg mb-6 leading-relaxed">
-                        Je m'appelle <strong>Anthoni Perez</strong>. Passionné de préparation physique et pratiquant de CrossFit depuis plus de 6 ans, j'ai constaté que trop d'athlètes stagnent ou se blessent à cause d'une programmation générique.
+                    <p class="text-gray-400 mb-6 leading-relaxed font-light">
+                        Je m'appelle <strong class="text-white">Anthoni Perez</strong>. Dans un monde de fitness générique, je prône l'approche chirurgicale. Pas de "one size fits all".
                     </p>
-                    <p class="text-lg mb-8 leading-relaxed">
-                        Mon approche est basée sur l'individualisation. Que tu sois débutant cherchant à maîtriser les bases ou compétiteur visant les quarts de finale, je construis le chemin le plus efficace vers <strong>tes</strong> objectifs.
+                    <p class="text-gray-400 mb-8 leading-relaxed font-light">
+                        Mon système est basé sur l'analyse de données et la biomécanique. Que tu vises les Quarts ou simplement à dominer ta classe, nous construirons une machine capable de durer.
                     </p>
                     
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-3">
-                            <div class="bg-red-600/20 p-1 rounded-full text-red-500">
-                                <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
-                            </div>
-                            <span class="font-medium">Adaptation à ton équipement (Home Gym ou Box)</span>
+                    <ul class="space-y-4 mb-8 font-header tracking-wide text-gray-300">
+                        <li class="flex items-center gap-4">
+                            <i data-lucide="crosshair" class="text-brand-gold w-5 h-5"></i>
+                            <span>PROGRAMMATION INTELLIGENTE</span>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <div class="bg-red-600/20 p-1 rounded-full text-red-500">
-                                <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
-                            </div>
-                            <span class="font-medium">Prévention des blessures</span>
+                        <li class="flex items-center gap-4">
+                            <i data-lucide="shield" class="text-brand-gold w-5 h-5"></i>
+                            <span>PRÉVENTION DES BLESSURES</span>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <div class="bg-red-600/20 p-1 rounded-full text-red-500">
-                                <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
-                            </div>
-                            <span class="font-medium">Développement de la force et de la gymnastique</span>
+                        <li class="flex items-center gap-4">
+                            <i data-lucide="zap" class="text-brand-gold w-5 h-5"></i>
+                            <span>EXPLOSIVITÉ & FORCE</span>
                         </li>
                     </ul>
                 </div>
@@ -203,57 +213,56 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-24 bg-slate-800">
-        <div class="container mx-auto px-6">
-            <!-- Title -->
-            <div class="mb-12 text-center">
-                <span class="text-red-500 font-bold tracking-widest uppercase text-sm">Méthodologie</span>
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 leading-tight">Comment nous allons progresser</h2>
-                <div class="h-1 w-20 bg-red-600 mt-4 mx-auto"></div>
+    <section id="services" class="py-24 bg-black relative">
+        <!-- Texture subtile en background -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#333 1px, transparent 1px); background-size: 20px 20px;"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="mb-16 text-center max-w-2xl mx-auto">
+                <span class="text-brand-gold font-header font-bold tracking-[0.2em] text-sm">MÉTHODOLOGIE</span>
+                <h2 class="text-3xl md:text-5xl font-header font-bold text-white mt-2">L'ARSENAL</h2>
+                <div class="h-[2px] w-24 bg-brand-gold mt-6 mx-auto"></div>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 hover:border-red-600 transition-all duration-300 group hover:-translate-y-2">
-                    <div class="mb-6 text-red-500 group-hover:scale-110 transition-transform duration-300">
-                        <i data-lucide="calendar" class="w-8 h-8"></i>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card Style Mjollnir -->
+                <div class="bg-brand-panel p-8 border border-gray-800 hover:border-brand-gold transition-all duration-300 group">
+                    <div class="mb-6 text-brand-gold group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="calendar" class="w-10 h-10 stroke-1"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Programmation Sur-Mesure</h3>
-                    <p class="text-slate-400 leading-relaxed text-sm">
-                        Fini le hasard. Reçois chaque semaine un plan d'entraînement adapté à tes faiblesses, ton matériel et ton emploi du temps.
+                    <h3 class="text-xl font-header font-bold text-white mb-3 tracking-wide">PROGRAMMATION</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Planification hebdomadaire adaptée à tes cycles de force et métaboliques. Rien n'est laissé au hasard.
                     </p>
                 </div>
                 
-                <!-- Service 2 -->
-                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 hover:border-red-600 transition-all duration-300 group hover:-translate-y-2">
-                    <div class="mb-6 text-red-500 group-hover:scale-110 transition-transform duration-300">
-                        <i data-lucide="video" class="w-8 h-8"></i>
+                <div class="bg-brand-panel p-8 border border-gray-800 hover:border-brand-gold transition-all duration-300 group">
+                    <div class="mb-6 text-brand-gold group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="eye" class="w-10 h-10 stroke-1"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Analyse Vidéo Technique</h3>
-                    <p class="text-slate-400 leading-relaxed text-sm">
-                        Envoie tes vidéos de mouvements (Clean, Snatch, Gym). Je les analyse et te donne des correctifs précis pour progresser.
+                    <h3 class="text-xl font-header font-bold text-white mb-3 tracking-wide">ANALYSE VIDÉO</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Feedback technique précis. Correction des leviers et des trajectoires pour optimiser l'efficience.
                     </p>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 hover:border-red-600 transition-all duration-300 group hover:-translate-y-2">
-                    <div class="mb-6 text-red-500 group-hover:scale-110 transition-transform duration-300">
-                        <i data-lucide="utensils" class="w-8 h-8"></i>
+                <div class="bg-brand-panel p-8 border border-gray-800 hover:border-brand-gold transition-all duration-300 group">
+                    <div class="mb-6 text-brand-gold group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="activity" class="w-10 h-10 stroke-1"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Suivi Nutritionnel</h3>
-                    <p class="text-slate-400 leading-relaxed text-sm">
-                        La performance passe par l'assiette. Stratégie de macros adaptée à tes objectifs (perte de gras, prise de masse ou perf).
+                    <h3 class="text-xl font-header font-bold text-white mb-3 tracking-wide">NUTRITION</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Carburant pour la machine. Stratégies de macros pour soutenir le volume d'entraînement.
                     </p>
                 </div>
 
-                <!-- Service 4 -->
-                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 hover:border-red-600 transition-all duration-300 group hover:-translate-y-2">
-                    <div class="mb-6 text-red-500 group-hover:scale-110 transition-transform duration-300">
-                        <i data-lucide="trophy" class="w-8 h-8"></i>
+                <div class="bg-brand-panel p-8 border border-gray-800 hover:border-brand-gold transition-all duration-300 group">
+                    <div class="mb-6 text-brand-gold group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="crown" class="w-10 h-10 stroke-1"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Préparation Compétition</h3>
-                    <p class="text-slate-400 leading-relaxed text-sm">
-                        Peaking, stratégie de WOD et préparation mentale pour arriver prêt le jour J (Opens, Throws, etc.).
+                    <h3 class="text-xl font-header font-bold text-white mb-3 tracking-wide">COMPÉTITION</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Préparation mentale et tactique de WOD. Arrive sur le floor avec un plan de bataille.
                     </p>
                 </div>
             </div>
@@ -261,74 +270,67 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="temoignages" class="py-24 bg-slate-900 relative overflow-hidden">
-        <!-- Decorative elements -->
-        <div class="absolute top-0 left-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="container mx-auto px-6 relative z-10">
-            <!-- Title -->
-            <div class="mb-12 text-center">
-                <span class="text-red-500 font-bold tracking-widest uppercase text-sm">Témoignages</span>
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 leading-tight">Ils ont transformé leur fitness</h2>
-                <div class="h-1 w-20 bg-red-600 mt-4 mx-auto"></div>
+    <section id="temoignages" class="py-24 bg-brand-dark border-y border-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="mb-16 text-center">
+                <h2 class="text-3xl md:text-5xl font-header font-bold text-white">RÉSULTATS</h2>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Review 1 -->
-                <div class="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700/50">
-                    <div class="flex gap-1 mb-4 text-yellow-500">
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <div class="bg-black p-8 border border-gray-800 relative">
+                    <div class="absolute top-0 right-0 p-4 opacity-20">
+                        <i data-lucide="quote" class="text-white w-8 h-8"></i>
                     </div>
-                    <p class="text-slate-300 italic mb-6">"Depuis que je suis la prog d'Anthoni, j'ai pris 15kg sur mon Back Squat et j'ai enfin passé mes premiers Muscle Ups. Une structure qui change tout."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center font-bold text-white">T</div>
-                        <div>
-                            <h4 class="font-bold text-white">Thomas D.</h4>
-                            <span class="text-xs text-red-500 uppercase tracking-wide">Athlète Intermédiaire</span>
-                        </div>
+                    <div class="flex gap-1 mb-6">
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                    </div>
+                    <p class="text-gray-400 italic mb-6 font-light leading-relaxed">"Depuis que je suis la prog d'Anthoni, j'ai pris 15kg sur mon Back Squat. Une structure qui change tout."</p>
+                    <div>
+                        <h4 class="font-header font-bold text-white tracking-wider">THOMAS D.</h4>
+                        <span class="text-xs text-brand-gold font-bold uppercase">Athlète Intermédiaire</span>
                     </div>
                 </div>
 
                 <!-- Review 2 -->
-                <div class="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700/50">
-                    <div class="flex gap-1 mb-4 text-yellow-500">
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <div class="bg-black p-8 border border-gray-800 relative">
+                    <div class="absolute top-0 right-0 p-4 opacity-20">
+                        <i data-lucide="quote" class="text-white w-8 h-8"></i>
                     </div>
-                    <p class="text-slate-300 italic mb-6">"Avec un emploi du temps chargé, Anthoni a su adapter le volume. Je progresse constamment sans me sentir dépassée. Le suivi est top !"</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center font-bold text-white">S</div>
-                        <div>
-                            <h4 class="font-bold text-white">Sarah L.</h4>
-                            <span class="text-xs text-red-500 uppercase tracking-wide">Maman & CrossFiteuse</span>
-                        </div>
+                    <div class="flex gap-1 mb-6">
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                    </div>
+                    <p class="text-gray-400 italic mb-6 font-light leading-relaxed">"Avec un emploi du temps chargé, Anthoni a su adapter le volume. Je progresse constamment."</p>
+                    <div>
+                        <h4 class="font-header font-bold text-white tracking-wider">SARAH L.</h4>
+                        <span class="text-xs text-brand-gold font-bold uppercase">RX Athlete</span>
                     </div>
                 </div>
 
                 <!-- Review 3 -->
-                <div class="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700/50">
-                    <div class="flex gap-1 mb-4 text-yellow-500">
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <div class="bg-black p-8 border border-gray-800 relative">
+                    <div class="absolute top-0 right-0 p-4 opacity-20">
+                        <i data-lucide="quote" class="text-white w-8 h-8"></i>
                     </div>
-                    <p class="text-slate-300 italic mb-6">"L'analyse vidéo est bluffante. Il voit des détails que je n'avais jamais remarqués. Mon snatch est devenu beaucoup plus fluide."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center font-bold text-white">J</div>
-                        <div>
-                            <h4 class="font-bold text-white">Julien M.</h4>
-                            <span class="text-xs text-red-500 uppercase tracking-wide">Compétiteur</span>
-                        </div>
+                    <div class="flex gap-1 mb-6">
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                    </div>
+                    <p class="text-gray-400 italic mb-6 font-light leading-relaxed">"L'analyse vidéo est bluffante. Il voit des détails invisibles. Mon snatch est devenu fluide."</p>
+                    <div>
+                        <h4 class="font-header font-bold text-white tracking-wider">JULIEN M.</h4>
+                        <span class="text-xs text-brand-gold font-bold uppercase">Compétiteur</span>
                     </div>
                 </div>
             </div>
@@ -336,90 +338,80 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="tarifs" class="py-24 bg-slate-800">
+    <section id="tarifs" class="py-24 bg-black">
         <div class="container mx-auto px-6">
-            <!-- Title -->
-            <div class="mb-12 text-center">
-                <span class="text-red-500 font-bold tracking-widest uppercase text-sm">Investissement</span>
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2 leading-tight">Choisis ton niveau d'accompagnement</h2>
-                <div class="h-1 w-20 bg-red-600 mt-4 mx-auto"></div>
+            <div class="mb-16 text-center">
+                <span class="text-brand-gold font-header font-bold tracking-[0.2em] text-sm">INVESTISSEMENT</span>
+                <h2 class="text-3xl md:text-5xl font-header font-bold text-white mt-2">REJOINS L'ÉLITE</h2>
             </div>
             
             <div class="flex flex-col lg:flex-row justify-center items-stretch gap-8 max-w-5xl mx-auto">
                 
                 <!-- Plan Performance -->
-                <div class="flex-1 bg-slate-900 border border-slate-700 rounded-2xl p-8 md:p-12 relative flex flex-col hover:border-slate-500 transition-colors">
-                    <h3 class="text-2xl font-bold text-white mb-2">Performance</h3>
+                <div class="flex-1 bg-brand-panel border border-gray-800 p-10 flex flex-col hover:border-gray-600 transition-colors">
+                    <h3 class="text-2xl font-header font-bold text-white mb-2">PERFORMANCE</h3>
                     <div class="flex items-baseline mb-8">
-                        <span class="text-5xl font-black text-white">89€</span>
-                        <span class="text-slate-400 ml-2">/mois</span>
+                        <span class="text-5xl font-header font-bold text-brand-gold">89€</span>
+                        <span class="text-gray-500 ml-2">/mois</span>
                     </div>
                     
-                    <ul class="space-y-4 mb-10 flex-1">
-                        <li class="flex items-start gap-3 text-slate-300 text-sm">
-                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                    <ul class="space-y-5 mb-10 flex-1 text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
                             Programmation 100% personnalisée
                         </li>
-                        <li class="flex items-start gap-3 text-slate-300 text-sm">
-                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
                             3 à 5 séances par semaine
                         </li>
-                        <li class="flex items-start gap-3 text-slate-300 text-sm">
-                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
                             Feedback vidéo hebdomadaire
                         </li>
-                        <li class="flex items-start gap-3 text-slate-300 text-sm">
-                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
-                            Ajustements illimités
-                        </li>
-                        <li class="flex items-start gap-3 text-slate-300 text-sm">
-                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
                             Support WhatsApp 7j/7
                         </li>
                     </ul>
                     
-                    <a href="#contact" class="w-full block text-center border-2 border-white text-white py-3 rounded-md font-bold hover:bg-white hover:text-slate-900 transition-all uppercase tracking-wider">
-                        Choisir Performance
+                    <a href="#contact" class="w-full block text-center border border-white text-white py-4 font-header font-bold hover:bg-white hover:text-black transition-all tracking-widest uppercase">
+                        CHOISIR
                     </a>
                 </div>
 
                 <!-- Plan Elite -->
-                <div class="flex-1 bg-gradient-to-b from-slate-700 to-slate-800 border-2 border-red-600 rounded-2xl p-8 md:p-12 relative flex flex-col transform lg:-translate-y-4 shadow-2xl shadow-red-900/20">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest shadow-lg">
+                <div class="flex-1 bg-gradient-to-b from-gray-900 to-black border border-brand-gold p-10 flex flex-col relative">
+                    <div class="absolute top-0 right-0 bg-brand-gold text-black text-xs font-bold px-3 py-1 font-header tracking-widest uppercase">
                         Recommandé
                     </div>
                     
-                    <h3 class="text-2xl font-bold text-white mb-2">Elite</h3>
+                    <h3 class="text-2xl font-header font-bold text-white mb-2">ELITE</h3>
                     <div class="flex items-baseline mb-8">
-                        <span class="text-5xl font-black text-white">129€</span>
-                        <span class="text-slate-400 ml-2">/mois</span>
+                        <span class="text-5xl font-header font-bold text-brand-gold">129€</span>
+                        <span class="text-gray-500 ml-2">/mois</span>
                     </div>
                     
-                    <ul class="space-y-4 mb-10 flex-1">
-                        <li class="flex items-start gap-3 text-slate-300 text-sm">
-                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                    <ul class="space-y-5 mb-10 flex-1 text-gray-300 font-medium">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="plus" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
                             <strong>Tout du pack Performance</strong>
                         </li>
-                        <li class="flex items-start gap-3 text-slate-300 text-sm">
-                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
                             Suivi Nutritionnel complet
                         </li>
-                        <li class="flex items-start gap-3 text-slate-300 text-sm">
-                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
                             Appels de coaching mensuels
                         </li>
-                        <li class="flex items-start gap-3 text-slate-300 text-sm">
-                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
-                            Stratégie de compétition
-                        </li>
-                        <li class="flex items-start gap-3 text-slate-300 text-sm">
-                            <i data-lucide="check" class="text-red-500 flex-shrink-0 mt-0.5 w-5 h-5"></i>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
                             Analyse vidéo illimitée
                         </li>
                     </ul>
                     
-                    <a href="#contact" class="w-full block text-center bg-red-600 text-white py-3 rounded-md font-bold hover:bg-red-700 shadow-lg shadow-red-600/20 transition-all uppercase tracking-wider transform hover:-translate-y-1">
-                        Choisir Elite
+                    <a href="#contact" class="w-full block text-center bg-brand-gold text-black py-4 font-header font-bold hover:bg-white transition-all tracking-widest uppercase">
+                        CHOISIR ELITE
                     </a>
                 </div>
             </div>
@@ -427,74 +419,69 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-slate-900">
+    <section id="contact" class="py-24 bg-brand-dark">
         <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto bg-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row border border-gray-800">
                 
                 <!-- Contact Info Side -->
-                <div class="md:w-2/5 bg-red-600 p-10 text-white flex flex-col justify-between">
+                <div class="md:w-2/5 bg-black p-12 border-r border-gray-800 flex flex-col justify-between">
                     <div>
-                        <h3 class="text-2xl font-bold mb-6">Prêt à commencer ?</h3>
-                        <p class="text-red-100 mb-8 leading-relaxed">
-                            Remplis ce formulaire pour réserver ton appel de bilan gratuit. Nous discuterons de tes objectifs et de la meilleure stratégie pour les atteindre.
+                        <h3 class="text-3xl font-header font-bold text-white mb-8">COMMENCER</h3>
+                        <p class="text-gray-400 mb-10 font-light leading-relaxed">
+                            Remplis le formulaire. Pas de spam, juste du coaching.
                         </p>
                         
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4">
-                                <i data-lucide="mail" class="opacity-80"></i>
-                                <span class="font-medium">contact@anthoniperez.com</span>
+                        <div class="space-y-8">
+                            <div class="flex items-center gap-4 group">
+                                <div class="p-3 border border-gray-800 group-hover:border-brand-gold transition-colors">
+                                    <i data-lucide="mail" class="text-brand-gold w-5 h-5"></i>
+                                </div>
+                                <span class="font-header tracking-wide text-gray-300 text-sm">contact@anthoniperez.com</span>
                             </div>
-                            <div class="flex items-center gap-4">
-                                <i data-lucide="instagram" class="opacity-80"></i>
-                                <span class="font-medium">@anthoni.perez_coach</span>
+                            <div class="flex items-center gap-4 group">
+                                <div class="p-3 border border-gray-800 group-hover:border-brand-gold transition-colors">
+                                    <i data-lucide="instagram" class="text-brand-gold w-5 h-5"></i>
+                                </div>
+                                <span class="font-header tracking-wide text-gray-300 text-sm">@anthoni.perez_coach</span>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-12 hidden md:block">
-                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-lg">
-                            <i data-lucide="dumbbell" class="text-white w-8 h-8"></i>
                         </div>
                     </div>
                 </div>
 
                 <!-- Form Side -->
-                <div class="md:w-3/5 p-10 relative">
-                    <!-- Success Message (Hidden by default) -->
-                    <div id="success-message" class="hidden absolute inset-0 bg-slate-800 flex-col items-center justify-center text-center p-10 z-10 rounded-r-3xl">
-                        <div class="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mb-6 animate-bounce">
-                            <i data-lucide="check" class="w-10 h-10"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Message envoyé !</h3>
-                        <p class="text-slate-400">Anthoni te recontactera sous 24h.</p>
+                <div class="md:w-3/5 p-12 bg-brand-panel relative">
+                    <!-- Success Message -->
+                    <div id="success-message" class="hidden absolute inset-0 bg-brand-panel flex-col items-center justify-center text-center p-10 z-10">
+                        <i data-lucide="check-circle" class="w-16 h-16 text-brand-gold mb-6"></i>
+                        <h3 class="text-2xl font-header font-bold text-white mb-2">REÇU.</h3>
+                        <p class="text-gray-400">Je reviens vers toi sous 24h.</p>
                     </div>
 
                     <form id="contact-form" class="space-y-6">
                         <div class="grid grid-cols-2 gap-6">
                             <div class="col-span-2 md:col-span-1">
-                                <label class="block text-xs font-bold uppercase text-slate-400 mb-2">Prénom</label>
-                                <input type="text" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="Ton prénom" />
+                                <label class="block text-xs font-bold uppercase text-brand-gold tracking-widest mb-2">Prénom</label>
+                                <input type="text" required class="w-full bg-black border border-gray-800 p-4 text-white focus:outline-none focus:border-brand-gold transition-colors placeholder-gray-700 font-sans" placeholder="PRÉNOM" />
                             </div>
                             <div class="col-span-2 md:col-span-1">
-                                <label class="block text-xs font-bold uppercase text-slate-400 mb-2">Nom</label>
-                                <input type="text" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="Ton nom" />
+                                <label class="block text-xs font-bold uppercase text-brand-gold tracking-widest mb-2">Nom</label>
+                                <input type="text" required class="w-full bg-black border border-gray-800 p-4 text-white focus:outline-none focus:border-brand-gold transition-colors placeholder-gray-700 font-sans" placeholder="NOM" />
                             </div>
                         </div>
                         
                         <div>
-                            <label class="block text-xs font-bold uppercase text-slate-400 mb-2">Email</label>
-                            <input type="email" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="ton.email@exemple.com" />
+                            <label class="block text-xs font-bold uppercase text-brand-gold tracking-widest mb-2">Email</label>
+                            <input type="email" required class="w-full bg-black border border-gray-800 p-4 text-white focus:outline-none focus:border-brand-gold transition-colors placeholder-gray-700 font-sans" placeholder="EMAIL" />
                         </div>
 
                         <div>
-                            <label class="block text-xs font-bold uppercase text-slate-400 mb-2">Objectif Principal</label>
+                            <label class="block text-xs font-bold uppercase text-brand-gold tracking-widest mb-2">Objectif</label>
                             <div class="relative">
-                                <select class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors appearance-none">
+                                <select class="w-full bg-black border border-gray-800 p-4 text-white focus:outline-none focus:border-brand-gold transition-colors appearance-none font-sans">
                                     <option>Performance (Compétition)</option>
                                     <option>Prise de force</option>
                                     <option>Gymnastique</option>
-                                    <option>Remise en forme / Santé</option>
-                                    <option>Autre</option>
+                                    <option>Remise en forme</option>
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white">
                                     <i data-lucide="chevron-down" class="w-4 h-4"></i>
@@ -503,13 +490,12 @@
                         </div>
                         
                         <div>
-                            <label class="block text-xs font-bold uppercase text-slate-400 mb-2">Message (Optionnel)</label>
-                            <textarea rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="Parle-moi de ton expérience en CrossFit..."></textarea>
+                            <label class="block text-xs font-bold uppercase text-brand-gold tracking-widest mb-2">Message</label>
+                            <textarea rows="4" class="w-full bg-black border border-gray-800 p-4 text-white focus:outline-none focus:border-brand-gold transition-colors placeholder-gray-700 font-sans" placeholder="Tes objectifs, ton expérience..."></textarea>
                         </div>
 
-                        <button type="submit" id="submit-btn" class="w-full flex items-center justify-center gap-2 bg-red-600 text-white px-6 py-3 rounded-md font-bold hover:bg-red-700 shadow-lg shadow-red-600/20 transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider">
-                           <span>Envoyer ma demande</span>
-                           <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        <button type="submit" id="submit-btn" class="w-full bg-brand-gold text-black font-header font-bold text-lg py-4 hover:bg-white transition-all tracking-widest uppercase mt-4">
+                           <span>ENVOYER</span>
                         </button>
                     </form>
                 </div>
@@ -518,28 +504,28 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 py-12 border-t border-slate-900">
+    <footer class="bg-black py-12 border-t border-gray-900">
         <div class="container mx-auto px-6 text-center md:text-left">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                    <div class="text-xl font-black text-white italic tracking-tighter flex items-center justify-center md:justify-start gap-2 mb-2">
-                        <i data-lucide="dumbbell" class="text-red-600 w-6 h-6"></i>
-                        ANTHONI<span class="text-red-600">PEREZ</span>
+                    <div class="text-2xl font-header font-bold text-white tracking-widest flex items-center justify-center md:justify-start gap-2 mb-2">
+                        <i data-lucide="dumbbell" class="text-brand-gold w-6 h-6"></i>
+                        ANTHONI<span class="text-brand-gold">PEREZ</span>
                     </div>
-                    <p class="text-slate-500 text-sm">Coaching CrossFit & Préparation Physique</p>
+                    <p class="text-gray-600 text-xs tracking-widest uppercase">Coaching Individuel & Programmation</p>
                 </div>
                 
                 <div class="flex gap-6 mb-6 md:mb-0">
-                    <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="instagram"></i></a>
-                    <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="mail"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-brand-gold transition-colors"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-brand-gold transition-colors"><i data-lucide="mail"></i></a>
                 </div>
             </div>
             
-            <div class="border-t border-slate-900 mt-8 pt-8 flex flex-col md:flex-row justify-between text-slate-600 text-xs">
-                <p>&copy; 2024 Anthoni Perez Coaching. Tous droits réservés.</p>
+            <div class="border-t border-gray-900 mt-8 pt-8 flex flex-col md:flex-row justify-between text-gray-700 text-xs font-header tracking-wider">
+                <p>&copy; 2024 ANTHONI PEREZ.</p>
                 <div class="flex gap-4 justify-center md:justify-start mt-4 md:mt-0">
-                    <a href="#" class="hover:text-slate-400">Mentions Légales</a>
-                    <a href="#" class="hover:text-slate-400">CGV</a>
+                    <a href="#" class="hover:text-gray-500">LÉGAL</a>
+                    <a href="#" class="hover:text-gray-500">CGV</a>
                 </div>
             </div>
         </div>
@@ -547,27 +533,24 @@
 
     <!-- Scripts JS -->
     <script>
-        // 1. Initialiser les icônes Lucide
         lucide.createIcons();
 
-        // 2. Gestion de la Navbar Sticky
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-slate-900/95', 'backdrop-blur-md', 'shadow-lg', 'py-4');
-                navbar.classList.remove('py-6');
+                navbar.classList.add('bg-black/95', 'backdrop-blur-sm', 'border-gray-900');
+                navbar.classList.remove('border-transparent', 'py-6');
+                navbar.classList.add('py-4');
             } else {
-                navbar.classList.remove('bg-slate-900/95', 'backdrop-blur-md', 'shadow-lg', 'py-4');
-                navbar.classList.add('py-6');
+                navbar.classList.remove('bg-black/95', 'backdrop-blur-sm', 'border-gray-900', 'py-4');
+                navbar.classList.add('border-transparent', 'py-6');
             }
         });
 
-        // 3. Menu Mobile Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
         const mobileLinks = document.querySelectorAll('.mobile-link');
-
         let isMenuOpen = false;
 
         function toggleMenu() {
@@ -576,24 +559,21 @@
                 mobileMenu.classList.remove('hidden');
                 mobileMenu.classList.add('flex');
                 menuIcon.setAttribute('data-lucide', 'x');
+                navbar.classList.add('bg-black');
             } else {
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
                 menuIcon.setAttribute('data-lucide', 'menu');
+                if(window.scrollY <= 50) navbar.classList.remove('bg-black');
             }
-            lucide.createIcons(); // Rafraîchir l'icône
+            lucide.createIcons();
         }
 
         mobileMenuBtn.addEventListener('click', toggleMenu);
-
-        // Fermer le menu au clic sur un lien
         mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if(isMenuOpen) toggleMenu();
-            });
+            link.addEventListener('click', () => { if(isMenuOpen) toggleMenu(); });
         });
 
-        // 4. Gestion du Formulaire (Simulation)
         const form = document.getElementById('contact-form');
         const successMessage = document.getElementById('success-message');
         const submitBtn = document.getElementById('submit-btn');
@@ -601,25 +581,19 @@
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            // État chargement
-            btnText.textContent = 'Envoi en cours...';
-            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
-            
-            // Simulation délai réseau
+            btnText.textContent = 'ENVOI...';
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
             setTimeout(() => {
                 form.classList.add('hidden');
                 successMessage.classList.remove('hidden');
                 successMessage.classList.add('flex');
-                
-                // Reset après 5 secondes (pour démo)
                 setTimeout(() => {
                     form.reset();
                     form.classList.remove('hidden');
                     successMessage.classList.add('hidden');
                     successMessage.classList.remove('flex');
-                    btnText.textContent = 'Envoyer ma demande';
-                    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    btnText.textContent = 'ENVOYER';
+                    submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
                 }, 5000);
             }, 1500);
         });
