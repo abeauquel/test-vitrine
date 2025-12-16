@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MJÖLLNIR - Programmation CrossFit Élite</title>
+    <!-- Chargement de Tailwind CSS pour un style moderne et responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Configuration de base Tailwind pour un thème sombre et puissant */
+        :root {
+            --primary-color: #B91C1C; /* Rouge Profond/Crimson */
+            --secondary-color: #111827; /* Noir Profond */
+            --accent-color: #FBBF24; /* Or/Jaune Vif (Accès Rapide à l'énergie) */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--secondary-color);
+            color: #E5E7EB; /* Texte principal en Gris Clair */
+        }
+        /* Style des boutons Call-to-Action */
+        .btn-cta {
+            @apply inline-flex items-center justify-center px-8 py-3 text-base font-bold leading-6 transition duration-150 ease-in-out bg-red-700 border border-transparent rounded-lg shadow-lg text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-600 focus:ring-opacity-50 transform hover:scale-105;
+        }
+        /* Style pour l'image de fond du Hero (Dark/High Contrast) */
+        #hero-section {
+            background-image: url('https://placehold.co/1920x800/111827/FBBF24/png?text=MJÖLLNIR+PROGRAMMING+ELITE'); 
+            background-size: cover;
+            background-position: center;
+        }
+        /* Styles pour les ancres de navigation */
+        .nav-link {
+            @apply text-gray-300 hover:text-accent-color transition duration-300 font-semibold;
+        }
+        /* Texte de la bannière sur l'image */
+        #hero-section h1, #hero-section p {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+        }
+        .text-accent {
+            color: var(--accent-color);
+        }
+        /* Style pour la zone de résultat de l'analyse */
+        #analysis-result {
+            white-space: pre-wrap; /* Preserve formatting from LLM response */
+            text-align: left;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 0.5rem;
+            background-color: #1F2937; /* Plus clair que le background pour contraster */
+            border-left: 4px solid var(--accent-color);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- 1. HEADER & NAVIGATION (Fixe pour un accès rapide) -->
+    <header class="sticky top-0 z-10 bg-gray-800 shadow-xl border-b-2 border-red-700">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#accueil" class="text-3xl font-extrabold text-accent tracking-wider">MJÖLLNIR PRO</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#services" class="nav-link">Programmes</a>
+                <a href="#coach" class="nav-link">Stratège</a>
+                <a href="#temoignages" class="nav-link">Performance</a>
+                <a href="#analyse" class="nav-link text-accent">Analyse IA ✨</a> <!-- Lien vers la nouvelle section -->
+                <a href="#contact" class="btn-cta text-sm py-2 px-4 shadow-none bg-red-700 hover:bg-red-800">Démarrer</a>
+            </div>
+            <!-- Menu mobile simple (non fonctionnel pour garder le code simple) -->
+            <button class="md:hidden text-gray-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- 2. SECTION HERO (Accueil) -->
+    <section id="accueil" id="hero-section" class="flex items-center justify-center h-[80vh] text-white p-4">
+        <div class="text-center bg-gray-900 bg-opacity-70 p-12 rounded-xl max-w-5xl border-l-4 border-accent-color">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 uppercase tracking-tighter">
+                PROGRAMMATION <span class="text-red-600">STRATÉGIQUE</span> POUR ATTEINDRE L'ÉLITE
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 font-light text-gray-300">
+                Coaching individuel affilié Mjöllnir. Nous construisons votre force et votre stratégie pour les compétitions et les performances maximales.
+            </p>
+            <a href="#analyse" class="btn-cta">
+                <span class="mr-2 text-accent">⚡</span> Analyser Ma Performance
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. SECTION SERVICES (Les Offres - Piliers de Programmation) -->
+    <section id="services" class="py-16 md:py-24 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-center text-white mb-4">La Stratégie Mjöllnir</h2>
+            <p class="text-xl text-center text-gray-400 mb-16">Nous optimisons chaque cycle d'entraînement pour garantir votre progression.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Carte 1: Optimisation de la force -->
+                <div class="bg-gray-800 p-8 rounded-xl shadow-2xl hover:shadow-red-900 transition duration-300 border-t-4 border-accent-color">
+                    <div class="text-5xl text-accent mb-4">🏋️</div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Hyper-Spécificité Force</h3>
+                    <p class="text-gray-400">Des cycles de force basés sur des données, ajustant les volumes et les intensités pour briser les plateaux de PR.</p>
+                </div>
+
+                <!-- Carte 2: Gestion de la Fatigue -->
+                <div class="bg-gray-800 p-8 rounded-xl shadow-2xl hover:shadow-red-900 transition duration-300 border-t-4 border-accent-color">
+                    <div class="text-5xl text-accent mb-4">⚙️</div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Stratégie & Compétition</h3>
+                    <p class="text-gray-400">Apprentissage de la gestion des WODs multi-modalités, gestion du "pacing" et stratégies de transition en compétition.</p>
+                </div>
+
+                <!-- Carte 3: Évaluation et Correction -->
+                <div class="bg-gray-800 p-8 rounded-xl shadow-2xl hover:shadow-red-900 transition duration-300 border-t-4 border-accent-color">
+                    <div class="text-5xl text-accent mb-4">🔬</div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Analyse Biométrique</h3>
+                    <p class="text-gray-400">Évaluation des faiblesses techniques et des déséquilibres pour une prescription d'exercices correctifs précise et efficace.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SECTION TÉMOIGNAGES (Preuve de Performance) -->
+    <section id="temoignages" class="py-16 md:py-24 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-center text-white mb-16">La Preuve par les Athlètes</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Témoignage 1 -->
+                <blockquote class="bg-gray-900 p-6 rounded-lg shadow-xl border-l-4 border-red-700">
+                    <p class="text-lg italic text-gray-300">"La programmation Mjöllnir est un changement de jeu. J'ai gagné en capacité de travail et la stratégie de 'pacing' m'a propulsé au sommet du classement local."</p>
+                    <footer class="mt-4 font-bold text-accent">— Marc, Qualifié pour les Événements Nationaux</footer>
+                </blockquote>
+                <!-- Témoignage 2 -->
+                <blockquote class="bg-gray-900 p-6 rounded-lg shadow-xl border-l-4 border-red-700">
+                    <p class="text-lg italic text-gray-300">"J'ai toujours été bon en force, mais faible en endurance. L'analyse du coach a rééquilibré mon profil en seulement 4 mois. Des résultats concrets."</p>
+                    <footer class="mt-4 font-bold text-accent">— Léa, Athlète de niveau Intermédiaire</footer>
+                </blockquote>
+                 <!-- Témoignage 3 -->
+                <blockquote class="bg-gray-900 p-6 rounded-lg shadow-xl border-l-4 border-red-700">
+                    <p class="text-lg italic text-gray-300">"Ce n'est pas juste du coaching, c'est de la stratégie. J'ai appris à m'entraîner plus intelligemment, pas seulement plus fort."</p>
+                    <footer class="mt-4 font-bold text-accent">— Thomas, Ex-Compétiteur</footer>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SECTION COACH (Crédibilité) -->
+    <section id="coach" class="py-16 md:py-24 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-center text-white mb-12">Votre Stratège de Performance</h2>
+            <div class="md:flex items-center justify-center space-y-8 md:space-y-0 md:space-x-12">
+                <!-- Placeholder Image -->
+                <div class="flex-shrink-0">
+                    <img class="w-64 h-64 object-cover rounded-full shadow-2xl border-4 border-accent-color mx-auto" 
+                         src="https://placehold.co/256x256/1F2937/FBBF24?text=Coach" 
+                         alt="Photo du coach professionnel">
+                </div>
+                <!-- Description -->
+                <div class="max-w-2xl text-center md:text-left">
+                    <h3 class="text-3xl font-bold text-white mb-3">Alexandre "Le Stratège" Dubois</h3>
+                    <p class="text-lg text-gray-300 mb-4">
+                        <span class="font-semibold text-red-600">Coach Principal Affilié Mjöllnir,</span> Level 3 Trainer (CF-L3), Expert en Programmation et Gestion du Volume.
+                    </p>
+                    <p class="text-gray-400">
+                        Mon rôle est de traduire les principes de l'élite de la programmation Mjöllnir à votre niveau individuel. Nous maximiserons les gains tout en gérant la fatigue et en optimisant vos cycles de compétition. Votre succès est une question de planification.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 6. ANALYSE STRATÉGIQUE IA (Gemini API Feature) -->
+    <section id="analyse" class="py-16 md:py-24 bg-gray-800 border-t-2 border-red-700">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-extrabold text-white mb-4">Analyse Stratégique Instantanée ✨</h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Décrivez votre situation actuelle (points forts, faiblesses, objectifs pour les 6 prochains mois). Notre IA vous fournira une première piste de programmation.
+            </p>
+
+            <textarea id="athlete-input" 
+                      class="w-full h-32 p-4 rounded-lg bg-gray-700 text-white border border-gray-600 focus:ring-red-700 focus:border-red-700 mb-6"
+                      placeholder="Ex: Mon PR en Snatch est de 80kg, mais mon endurance sur les WODs longs est ma plus grande faiblesse. Je vise une qualification à l'Open."
+                      required></textarea>
+            
+            <button id="analyze-button" class="btn-cta bg-accent-color text-gray-900 hover:bg-yellow-400">
+                <span class="mr-2">🚀</span> Générer l'Analyse Mjöllnir
+            </button>
+            
+            <div id="loading-indicator" class="mt-4 text-accent hidden">
+                Analyse en cours... Notre IA évalue votre stratégie.
+            </div>
+
+            <div id="analysis-result" class="text-gray-200 hidden">
+                <!-- Le résultat de l'API Gemini sera injecté ici -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FOOTER & CALL TO ACTION FINAL (Contact/Réservation) -->
+    <footer id="contact" class="py-16 bg-gray-900 text-white border-t-2 border-red-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-extrabold text-white mb-4">Passez à la Programmation Individuelle</h2>
+            <p class="text-xl text-gray-300 mb-10">Réservez votre bilan technique approfondi avec le Coach Alexandre. Place limitée.</p>
+            
+            <!-- CTA vers un système de réservation externe (Calendly, etc.) -->
+            <a href="#lien-reservation-externe" class="btn-cta bg-red-700 hover:bg-red-800">
+                <span class="mr-2">⚔️</span> Je Réserve mon Bilan Stratégique
+            </a>
+
+            <!-- Informations de contact simples -->
+            <div class="mt-12 text-gray-400 text-sm space-y-2">
+                <p>Affilié à la programmation Mjöllnir. | Email: contact@mjollnirpro.com</p>
+                <p>Téléphone: +33 6 00 00 00 00</p>
+                <p class="pt-4">&copy; 2025 MJÖLLNIR PRO Coaching. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const analyzeButton = document.getElementById('analyze-button');
+            const inputField = document.getElementById('athlete-input');
+            const resultDiv = document.getElementById('analysis-result');
+            const loadingIndicator = document.getElementById('loading-indicator');
+            
+            // Constantes de l'API Gemini
+            const apiKey = ""; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+            // Fonction pour l'appel API avec Backoff exponentiel
+            async function fetchWithExponentialBackoff(payload, maxRetries = 5) {
+                for (let attempt = 0; attempt < maxRetries; attempt++) {
+                    try {
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (response.status === 429 && attempt < maxRetries - 1) {
+                            // Too Many Requests (429), retry after a delay
+                            const delay = Math.pow(2, attempt) * 1000 + Math.random() * 1000;
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                            continue;
+                        }
+                        
+                        if (!response.ok) {
+                             throw new Error(\`HTTP error! status: \${response.status}\`);
+                        }
+
+                        return response.json();
+
+                    } catch (error) {
+                         // Only retry on network errors or 429
+                         if (attempt === maxRetries - 1) {
+                            throw error;
+                         }
+                    }
+                }
+            }
+
+            analyzeButton.addEventListener('click', async () => {
+                const userQuery = inputField.value.trim();
+
+                if (userQuery.length < 20) {
+                    resultDiv.textContent = "Veuillez fournir plus de détails sur vos performances et objectifs (minimum 20 caractères).";
+                    resultDiv.classList.remove('hidden');
+                    return;
+                }
+
+                // Afficher le chargement
+                resultDiv.classList.add('hidden');
+                loadingIndicator.classList.remove('hidden');
+                analyzeButton.disabled = true;
+
+                // Le prompt système définit le rôle du modèle
+                const systemPrompt = "Vous êtes un stratège de programmation CrossFit élite affilié à Mjöllnir. Analysez le besoin de l'athlète et fournissez une analyse concise et structurée en français. Le ton doit être professionnel, technique et motivant. Formatez la réponse avec des titres en gras, des listes et des sauts de ligne pour la lisibilité. Ne donnez pas de programme complet, mais des axes d'amélioration stratégiques.";
+                
+                // Le prompt utilisateur combine l'instruction et l'entrée utilisateur
+                const fullPrompt = `Analyse de performance pour athlète CrossFit:\n\nMon profil et mes objectifs:\n${userQuery}`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: fullPrompt }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+
+                try {
+                    const result = await fetchWithExponentialBackoff(payload);
+                    const generatedText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                    if (generatedText) {
+                        // Nettoyer le texte pour l'affichage (remplacer les sauts de ligne pour les insérer en HTML)
+                        resultDiv.textContent = generatedText;
+                    } else {
+                        resultDiv.textContent = "Erreur: Impossible d'obtenir une analyse. Veuillez réessayer.";
+                    }
+                } catch (error) {
+                    console.error("Gemini API Error:", error);
+                    resultDiv.textContent = "Erreur de connexion avec l'API. Veuillez vérifier votre réseau ou réessayer plus tard.";
+                } finally {
+                    // Masquer le chargement et afficher le résultat
+                    loadingIndicator.classList.add('hidden');
+                    resultDiv.classList.remove('hidden');
+                    analyzeButton.disabled = false;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
