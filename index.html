@@ -3,740 +3,600 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rebuild.by.m - Kiné CrossFit & Santé</title>
-    <meta name="description" content="Kinésithérapie spécialisée CrossFit & Haltérophilie. Suivis à distance et analyse de mouvement.">
-
+    <title>Anthoni Perez - Coaching CrossFit Individuel</title>
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Oswald (Titres) & Montserrat (Corps) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Lucide Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Icônes Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <!-- Configuration Tailwind personnalisée -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        display: ['Outfit', 'sans-serif'],
-                    },
                     colors: {
                         brand: {
-                            terra: '#d66d4f', // Terracotta principal
-                            sand: '#f7d1cc',  // Beige/Peach
-                            light: '#fdfbf9', // Fond très clair chaud
-                            dark: '#2d2a26',  // Texte principal
-                            muted: '#6b6661'  // Texte secondaire
+                            gold: '#C5A059', // Couleur dorée type Mjollnir
+                            dark: '#050505', // Noir quasi pur
+                            panel: '#111111', // Gris très sombre pour les cartes
                         }
                     },
-                    borderRadius: {
-                        '4xl': '2rem',
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        header: ['Oswald', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-
+    
     <style>
+        /* Ajustements globaux */
         body {
-            background-color: #fdfbf9;
-            color: #2d2a26;
+            background-color: #000000;
+        }
+        h1, h2, h3, h4, h5, h6, .font-header {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
         }
         
+        /* Barre de défilement custom */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #fdfbf9;
+            background: #000;
         }
         ::-webkit-scrollbar-thumb {
-            background: #e5e0dc;
-            border-radius: 10px;
+            background: #333;
+            border-radius: 0px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #d66d4f;
-        }
-
-        /* Animation Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* FAQ Transition */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        details[open] summary ~ * {
-            animation: sweep .3s ease-in-out;
-        }
-        @keyframes sweep {
-            0%    {opacity: 0; transform: translateY(-10px)}
-            100%  {opacity: 1; transform: translateY(0)}
+            background: #C5A059;
         }
     </style>
 </head>
-<body class="selection:bg-brand-sand selection:text-brand-terra overflow-x-hidden">
+<body class="font-sans text-gray-400 bg-black selection:bg-brand-gold selection:text-black antialiased">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 border-b border-transparent">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <!-- Logo -->
-            <a href="#hero" class="flex items-center gap-3 cursor-pointer group">
-                <div class="bg-brand-terra text-white p-2 rounded-xl group-hover:rotate-12 transition-transform">
-                   <i data-lucide="activity" class="w-5 h-5"></i>
-                </div>
-                <span class="text-xl font-display font-bold tracking-tight text-brand-dark lowercase">
-                    rebuild<span class="text-brand-terra">.</span>by<span class="text-brand-terra">.</span>m
-                </span>
+            <a href="#" class="text-2xl font-header font-bold text-white tracking-widest flex items-center gap-2 group">
+                <i data-lucide="dumbbell" class="text-brand-gold w-6 h-6 transform group-hover:rotate-12 transition-transform"></i>
+                ANTHONI<span class="text-brand-gold">PEREZ</span>
             </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center gap-8 font-medium text-sm text-brand-dark">
-                <a href="#apropos" class="hover:text-brand-terra transition-colors">Qui suis-je ?</a>
-                <a href="#expertise" class="hover:text-brand-terra transition-colors">Expertise</a>
-                <a href="#suivis" class="hover:text-brand-terra transition-colors">Suivi à Distance</a>
-                <a href="#temoignages" class="hover:text-brand-terra transition-colors">Témoignages</a>
-                
-                <a href="https://www.instagram.com/rebuild.by.m/" target="_blank" class="hover:text-brand-terra transition-colors text-brand-muted hover:bg-brand-sand/20 p-2 rounded-full">
-                    <i data-lucide="instagram" class="w-5 h-5"></i>
-                </a>
-                <a href="#contact" class="bg-brand-dark text-white hover:bg-brand-terra px-6 py-3 rounded-full font-semibold transition-all shadow-lg shadow-brand-dark/10 hover:shadow-brand-terra/20">
-                    Me contacter
+            <div class="hidden md:flex gap-8 items-center font-header font-medium text-sm tracking-widest text-gray-300">
+                <a href="#a-propos" class="hover:text-brand-gold transition-colors">À propos</a>
+                <a href="#services" class="hover:text-brand-gold transition-colors">Services</a>
+                <a href="#temoignages" class="hover:text-brand-gold transition-colors">Témoignages</a>
+                <a href="#tarifs" class="hover:text-brand-gold transition-colors">Tarifs</a>
+                <a href="#contact" class="bg-brand-gold text-black font-bold hover:bg-white px-6 py-2 transition-all duration-300 transform hover:-translate-y-1 ml-4 clip-path-slant">
+                    Commencer
                 </a>
             </div>
 
-            <!-- Mobile Toggle -->
-            <button id="mobile-menu-btn" class="md:hidden text-brand-dark">
-                <i data-lucide="menu" class="w-7 h-7"></i>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none hover:text-brand-gold transition-colors">
+                <i data-lucide="menu" id="menu-icon"></i>
             </button>
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md border-b border-brand-sand/30 p-6 flex-col gap-6 shadow-xl z-50">
-            <a href="#apropos" class="mobile-link text-lg font-display font-semibold text-brand-dark hover:text-brand-terra">Qui suis-je ?</a>
-            <a href="#expertise" class="mobile-link text-lg font-display font-semibold text-brand-dark hover:text-brand-terra">Expertise</a>
-            <a href="#suivis" class="mobile-link text-lg font-display font-semibold text-brand-dark hover:text-brand-terra">Suivi Distance</a>
-            <a href="#temoignages" class="mobile-link text-lg font-display font-semibold text-brand-dark hover:text-brand-terra">Témoignages</a>
-            <a href="#contact" class="mobile-link bg-brand-terra text-white py-4 rounded-xl font-bold text-center">Me contacter</a>
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-black border-t border-gray-900 p-6 flex-col gap-6 shadow-2xl">
+            <a href="#a-propos" class="text-xl font-header font-bold text-white hover:text-brand-gold mobile-link">À propos</a>
+            <a href="#services" class="text-xl font-header font-bold text-white hover:text-brand-gold mobile-link">Services</a>
+            <a href="#temoignages" class="text-xl font-header font-bold text-white hover:text-brand-gold mobile-link">Témoignages</a>
+            <a href="#tarifs" class="text-xl font-header font-bold text-white hover:text-brand-gold mobile-link">Tarifs</a>
+            <a href="#contact" class="text-xl font-header font-bold text-brand-gold mobile-link">Commencer</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <!-- Soft Background Elements -->
-        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-sand/30 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 -z-10"></div>
-        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-terra/5 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4 -z-10"></div>
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                alt="Gym Background Dark" 
+                class="w-full h-full object-cover grayscale brightness-50"
+            />
+            <!-- Gradient Overlay très sombre -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black"></div>
+        </div>
 
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-24">
-                <div class="md:w-1/2 space-y-8 reveal">
-                    <div class="inline-flex items-center gap-2 bg-brand-sand/40 border border-brand-sand text-brand-terra px-4 py-2 rounded-full text-sm font-semibold">
-                        <span class="w-2 h-2 rounded-full bg-brand-terra animate-pulse"></span>
-                        Suivis 100% Personnalisés
-                    </div>
-                    
-                    <h1 class="text-5xl md:text-7xl font-display font-bold leading-[1.1] text-brand-dark tracking-tight">
-                        S'épanouir dans la pratique,<br/>
-                        <span class="relative inline-block">
-                            sans douleur
-                            <span class="absolute bottom-2 left-0 w-full h-3 bg-brand-sand/60 -z-10 rounded-sm"></span>
-                        </span>
-                        <span class="text-brand-terra italic">& limitations.</span>
-                    </h1>
-                    
-                    <p class="text-xl text-brand-muted leading-relaxed max-w-lg">
-                        Passionnée par le mouvement et le sport, j'aide les crossfitteurs à comprendre leur corps pour performer durablement.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
-                        <a href="#contact" class="bg-brand-terra hover:bg-brand-dark text-white px-8 py-4 rounded-full font-semibold transition-all flex items-center justify-center gap-2 shadow-xl shadow-brand-terra/20 hover:shadow-none hover:translate-y-1">
-                            Commencer mon suivi
-                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#expertise" class="bg-white border border-brand-sand text-brand-dark hover:border-brand-terra hover:text-brand-terra px-8 py-4 rounded-full font-semibold transition-all flex items-center justify-center shadow-sm">
-                            Découvrir
-                        </a>
-                    </div>
+        <div class="container mx-auto px-6 relative z-10 pt-20 text-center md:text-left">
+            <div class="max-w-4xl mx-auto md:mx-0">
+                <div class="inline-block border border-brand-gold/50 text-brand-gold font-header font-bold px-4 py-1 mb-6 text-sm tracking-[0.2em] bg-black/50 backdrop-blur-sm">
+                    COACHING INDIVIDUEL & PROGRAMMATION
                 </div>
+                <h1 class="text-5xl md:text-8xl font-header font-bold text-white mb-6 leading-none">
+                    FORGE <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-200">
+                        TON HÉRITAGE.
+                    </span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl leading-relaxed font-light mx-auto md:mx-0">
+                    Arrête l'aléatoire. Adopte une méthode éprouvée. Programmation sur-mesure pour athlètes déterminés.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#services" class="px-8 py-4 bg-brand-gold text-black font-header font-bold text-lg hover:bg-white transition-all transform hover:-translate-y-1 text-center tracking-widest border border-brand-gold">
+                        VOIR LES PROGRAMMES
+                    </a>
+                    <a href="#contact" class="px-8 py-4 bg-transparent border border-white text-white font-header font-bold text-lg hover:border-brand-gold hover:text-brand-gold transition-all transform hover:-translate-y-1 text-center tracking-widest">
+                        BILAN OFFERT
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-                <!-- Hero Visual Soft -->
-                <div class="md:w-1/2 relative reveal">
-                    <div class="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-brand-dark/5">
-                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Manon Kine" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700">
-                        
-                        <!-- Floating Card -->
-                        <div class="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-sm p-6 rounded-3xl border border-white shadow-lg">
-                            <div class="flex items-center gap-4">
-                                <div class="bg-brand-terra/10 p-3 rounded-full text-brand-terra">
-                                    <i data-lucide="check-circle" class="w-6 h-6"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-brand-dark">Kiné du Sport</p>
-                                    <p class="text-sm text-brand-muted">Spécialisée CrossFit ®</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Decorative Circle -->
-                    <div class="absolute -top-12 -right-12 w-48 h-48 border-2 border-brand-terra/20 rounded-full z-0"></div>
-                    <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-brand-sand rounded-full -z-10"></div>
+    <!-- Stats Section (Noir sur Noir avec bordures) -->
+    <section class="relative z-20 bg-black border-y border-gray-900 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x-0 md:divide-x divide-gray-800">
+                <div class="p-4">
+                    <div class="text-5xl font-header font-bold text-white mb-2">50+</div>
+                    <div class="text-xs text-brand-gold tracking-[0.2em] font-bold">ATHLÈTES</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-5xl font-header font-bold text-white mb-2">100%</div>
+                    <div class="text-xs text-brand-gold tracking-[0.2em] font-bold">SUR-MESURE</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-5xl font-header font-bold text-white mb-2">24/7</div>
+                    <div class="text-xs text-brand-gold tracking-[0.2em] font-bold">SUPPORT</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-5xl font-header font-bold text-white mb-2">L1</div>
+                    <div class="text-xs text-brand-gold tracking-[0.2em] font-bold">TRAINER</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section Updated -->
-    <section id="apropos" class="py-24 bg-white relative overflow-hidden">
+    <!-- About Section -->
+    <section id="a-propos" class="py-24 bg-brand-dark">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row gap-16">
-                <!-- Visuals -->
-                <div class="md:w-1/2 relative md:sticky md:top-32 h-fit reveal">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="space-y-6 translate-y-12">
-                             <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=600&q=80" class="rounded-3xl object-cover h-64 w-full shadow-lg">
-                             <div class="bg-brand-light p-6 rounded-3xl border border-brand-sand/30">
-                                <p class="text-brand-terra font-bold text-3xl mb-1">100%</p>
-                                <p class="text-brand-muted text-sm font-medium">Personnalisé & Adapté à tes objectifs</p>
-                             </div>
-                        </div>
-                        <div class="space-y-6">
-                            <div class="bg-brand-terra p-6 rounded-3xl text-white">
-                                <i data-lucide="heart" class="w-8 h-8 mb-4"></i>
-                                <p class="font-medium">Passionnée par le mouvement & le sport.</p>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=600&q=80" class="rounded-3xl object-cover h-64 w-full shadow-lg">
-                        </div>
-                    </div>
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <!-- Image avec effet "Or" -->
+                <div class="md:w-1/2 relative group">
+                    <div class="absolute inset-0 border-2 border-brand-gold transform translate-x-3 translate-y-3 transition-transform group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                    <img 
+                        src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="Coach Anthoni Perez" 
+                        class="relative z-10 w-full grayscale contrast-125 brightness-90"
+                    />
                 </div>
                 
-                <!-- Content -->
-                <div class="md:w-1/2 space-y-8 reveal">
-                    <div>
-                        <h2 class="text-brand-terra font-bold tracking-wide uppercase text-sm mb-2">Qui suis-je ?</h2>
-                        <h3 class="text-3xl md:text-4xl font-display font-bold text-brand-dark mb-6">Je suis Manon 👋</h3>
-                        <p class="text-brand-muted text-lg leading-relaxed">
-                            Passionnée par le mouvement & le sport en général (surtout quand il s’agit de soulever lourd & de finir des WOD en crachant ses poumons 😅).
-                        </p>
-                        <p class="text-brand-dark font-medium text-lg mt-4 border-l-4 border-brand-sand pl-4">
-                            👉 J’ai créé <span class="text-brand-terra font-bold">@rebuild.by.m</span> pour aider les crossfitteurs/ses à s’épanouir dans leur pratique sans douleur & limitations.
-                        </p>
+                <div class="md:w-1/2">
+                    <div class="mb-8 text-left">
+                        <span class="text-brand-gold font-header font-bold tracking-[0.2em] text-sm block mb-2">LE COACH</span>
+                        <h2 class="text-4xl md:text-5xl font-header font-bold text-white leading-tight">
+                            PLUS QU'UN PROGRAMME,<br>UNE DISCIPLINE.
+                        </h2>
                     </div>
-
-                    <!-- The "Stop" List -->
-                    <div class="bg-red-50 p-6 rounded-3xl border border-red-100">
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3 text-brand-dark">
-                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 shrink-0 mt-0.5"></i>
-                                <span>Stop aux WOD gâchés par une douleur</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-brand-dark">
-                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 shrink-0 mt-0.5"></i>
-                                <span>Stop aux entraînements adaptés par défaut</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-brand-dark">
-                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 shrink-0 mt-0.5"></i>
-                                <span>Stop aux compétitions annulées</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-brand-dark">
-                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 shrink-0 mt-0.5"></i>
-                                <span>Stop aux frustrations de mobilité</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-brand-dark">
-                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 shrink-0 mt-0.5"></i>
-                                <span>Stop aux prises en charge « génériques » qui ne comprennent pas ta pratique</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- The "Solutions" List -->
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-2 mb-4">
-                            <div class="bg-brand-sand/50 p-2 rounded-lg text-brand-terra">
-                                <i data-lucide="lightbulb" class="w-5 h-5"></i>
-                            </div>
-                            <h4 class="font-bold text-xl text-brand-dark">Ici, tu trouveras :</h4>
-                        </div>
-                        <ul class="grid sm:grid-cols-1 gap-3">
-                            <li class="flex items-center gap-3 text-brand-muted">
-                                <i data-lucide="check" class="w-5 h-5 text-brand-terra font-bold"></i>
-                                Des conseils clairs pour comprendre ta pathologie
-                            </li>
-                            <li class="flex items-center gap-3 text-brand-muted">
-                                <i data-lucide="check" class="w-5 h-5 text-brand-terra font-bold"></i>
-                                Des solutions pour éradiquer tes douleurs
-                            </li>
-                            <li class="flex items-center gap-3 text-brand-muted">
-                                <i data-lucide="check" class="w-5 h-5 text-brand-terra font-bold"></i>
-                                Des outils pour améliorer ta mobilité
-                            </li>
-                            <li class="flex items-center gap-3 text-brand-muted">
-                                <i data-lucide="check" class="w-5 h-5 text-brand-terra font-bold"></i>
-                                Des stratégies pour prévenir les blessures
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- CTA -->
-                    <div class="pt-6 border-t border-brand-sand/30">
-                        <p class="font-bold text-brand-dark mb-4 text-lg">➡️ Et si tu veux aller plus loin : un suivi 100% personnalisé 🔥</p>
-                        <p class="text-brand-muted mb-6">
-                            Adapté à ton quotidien, ta pratique & tes objectifs – par une kiné du sport formée & spécialisée dans les pathologies du CrossFit.
-                        </p>
-                        <a href="#contact" class="inline-flex items-center gap-2 bg-brand-terra text-white px-6 py-3 rounded-xl font-bold hover:bg-brand-dark transition-colors shadow-lg shadow-brand-terra/20">
-                            Prendre RDV maintenant <i data-lucide="calendar-check" class="w-5 h-5"></i>
-                        </a>
-                    </div>
+                    
+                    <p class="text-gray-400 mb-6 leading-relaxed font-light">
+                        Je m'appelle <strong class="text-white">Anthoni Perez</strong>. Dans un monde de fitness générique, je prône l'approche chirurgicale. Pas de "one size fits all".
+                    </p>
+                    <p class="text-gray-400 mb-8 leading-relaxed font-light">
+                        Mon système est basé sur l'analyse de données et la biomécanique. Que tu vises les Quarts ou simplement à dominer ta classe, nous construirons une machine capable de durer.
+                    </p>
+                    
+                    <ul class="space-y-4 mb-8 font-header tracking-wide text-gray-300">
+                        <li class="flex items-center gap-4">
+                            <i data-lucide="crosshair" class="text-brand-gold w-5 h-5"></i>
+                            <span>PROGRAMMATION INTELLIGENTE</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <i data-lucide="shield" class="text-brand-gold w-5 h-5"></i>
+                            <span>PRÉVENTION DES BLESSURES</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <i data-lucide="zap" class="text-brand-gold w-5 h-5"></i>
+                            <span>EXPLOSIVITÉ & FORCE</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Cards (Expertise) -->
-    <section id="expertise" class="py-24 bg-brand-light relative">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <h2 class="text-4xl font-display font-bold text-brand-dark mb-4">Expertise & Soins</h2>
-                <p class="text-brand-muted">Une méthode éprouvée pour les athlètes exigeants.</p>
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-black relative">
+        <!-- Texture subtile en background -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#333 1px, transparent 1px); background-size: 20px 20px;"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="mb-16 text-center max-w-2xl mx-auto">
+                <span class="text-brand-gold font-header font-bold tracking-[0.2em] text-sm">MÉTHODOLOGIE</span>
+                <h2 class="text-3xl md:text-5xl font-header font-bold text-white mt-2">L'ARSENAL</h2>
+                <div class="h-[2px] w-24 bg-brand-gold mt-6 mx-auto"></div>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1: Approche Moderne -->
-                <div class="bg-white p-8 rounded-[2rem] shadow-xl shadow-brand-dark/5 hover:-translate-y-2 transition-transform duration-300 border border-brand-sand/20 reveal">
-                    <div class="w-14 h-14 bg-brand-terra/10 rounded-2xl flex items-center justify-center text-brand-terra mb-6 rotate-3">
-                        <i data-lucide="zap" class="w-7 h-7"></i>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card Style Mjollnir -->
+                <div class="bg-brand-panel p-8 border border-gray-800 hover:border-brand-gold transition-all duration-300 group">
+                    <div class="mb-6 text-brand-gold group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="calendar" class="w-10 h-10 stroke-1"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-brand-dark mb-3">Renforcement Actif</h3>
-                    <p class="text-brand-muted leading-relaxed mb-6">
-                        Une approche moderne de la kinésithérapie. Fini le passif, place au mouvement pour renforcer durablement vos zones fragiles et éviter la récidive.
+                    <h3 class="text-xl font-header font-bold text-white mb-3 tracking-wide">PROGRAMMATION</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Planification hebdomadaire adaptée à tes cycles de force et métaboliques. Rien n'est laissé au hasard.
                     </p>
-                    <a href="#contact" class="text-brand-terra font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                        Découvrir l'approche <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
                 </div>
-
-                <!-- Card 2: Expertise CrossFit -->
-                <div class="bg-white p-8 rounded-[2rem] shadow-xl shadow-brand-dark/5 hover:-translate-y-2 transition-transform duration-300 border border-brand-sand/20 relative overflow-hidden reveal">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-brand-sand/30 rounded-bl-[4rem] -mr-4 -mt-4 z-0"></div>
-                    <div class="relative z-10">
-                        <div class="w-14 h-14 bg-brand-sand/50 rounded-2xl flex items-center justify-center text-brand-dark mb-6 -rotate-3">
-                            <i data-lucide="dumbbell" class="w-7 h-7"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-brand-dark mb-3">Expertise CrossFit ®</h3>
-                        <p class="text-brand-muted leading-relaxed mb-6">
-                            Une excellente connaissance des mouvements spécifiques (Gym, Haltéro) et des prérequis mécaniques nécessaires pour performer sans se blesser.
-                        </p>
-                        <a href="#contact" class="text-brand-dark font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                            Analyser ma technique <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </a>
+                
+                <div class="bg-brand-panel p-8 border border-gray-800 hover:border-brand-gold transition-all duration-300 group">
+                    <div class="mb-6 text-brand-gold group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="eye" class="w-10 h-10 stroke-1"></i>
                     </div>
-                </div>
-
-                <!-- Card 3: Expérience -->
-                <div class="bg-white p-8 rounded-[2rem] shadow-xl shadow-brand-dark/5 hover:-translate-y-2 transition-transform duration-300 border border-brand-sand/20 reveal">
-                    <div class="w-14 h-14 bg-brand-terra/10 rounded-2xl flex items-center justify-center text-brand-terra mb-6 rotate-3">
-                        <i data-lucide="award" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-brand-dark mb-3">Expérience Terrain</h3>
-                    <p class="text-brand-muted leading-relaxed mb-6">
-                        Sur le terrain depuis 2019. Une expertise solide forgée en cabinet et confirmée par des centaines de suivis à distance réussis auprès d'athlètes.
+                    <h3 class="text-xl font-header font-bold text-white mb-3 tracking-wide">ANALYSE VIDÉO</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Feedback technique précis. Correction des leviers et des trajectoires pour optimiser l'efficience.
                     </p>
-                    <a href="#contact" class="text-brand-terra font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                        Commencer le suivi <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Remote Steps with Soft Colors -->
-    <section id="suivis" class="py-24 bg-brand-dark text-white rounded-[3rem] -mt-10 mb-10 relative z-10 mx-4 md:mx-0">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row gap-16">
-                <div class="md:w-2/5 reveal">
-                    <h2 class="text-brand-sand font-bold tracking-wide uppercase text-sm mb-4">100% Digital</h2>
-                    <h3 class="text-4xl md:text-5xl font-display font-bold mb-6">Votre kiné,<br/>où que vous soyez.</h3>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
-                        La distance n'est plus un obstacle à des soins de qualité. Grâce à un suivi digitalisé précis, bénéficiez de l'expertise Rebuild sans vous déplacer.
+                <div class="bg-brand-panel p-8 border border-gray-800 hover:border-brand-gold transition-all duration-300 group">
+                    <div class="mb-6 text-brand-gold group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="activity" class="w-10 h-10 stroke-1"></i>
+                    </div>
+                    <h3 class="text-xl font-header font-bold text-white mb-3 tracking-wide">NUTRITION</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Carburant pour la machine. Stratégies de macros pour soutenir le volume d'entraînement.
                     </p>
-                    <a href="#contact" class="bg-brand-terra hover:bg-white hover:text-brand-terra text-white px-8 py-4 rounded-full font-bold transition-all inline-flex items-center gap-2">
-                        Réserver un bilan
-                        <i data-lucide="calendar" class="w-5 h-5"></i>
-                    </a>
                 </div>
 
-                <div class="md:w-3/5 space-y-12 reveal">
-                    <!-- Step 1 -->
-                    <div class="flex gap-6 group">
-                        <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl font-bold text-brand-sand group-hover:bg-brand-terra group-hover:text-white group-hover:border-brand-terra transition-all duration-500">1</div>
-                        <div>
-                            <h4 class="text-xl font-bold text-white mb-2">Bilan Visio Initial</h4>
-                            <p class="text-gray-400 leading-relaxed">60 min d'échange pour comprendre votre histoire, vos blessures et vos objectifs. Tests de mobilité en direct.</p>
-                        </div>
+                <div class="bg-brand-panel p-8 border border-gray-800 hover:border-brand-gold transition-all duration-300 group">
+                    <div class="mb-6 text-brand-gold group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="crown" class="w-10 h-10 stroke-1"></i>
                     </div>
-                     <!-- Step 2 -->
-                     <div class="flex gap-6 group">
-                        <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl font-bold text-brand-sand group-hover:bg-brand-terra group-hover:text-white group-hover:border-brand-terra transition-all duration-500">2</div>
-                        <div>
-                            <h4 class="text-xl font-bold text-white mb-2">Plan d'Action Sur-Mesure</h4>
-                            <p class="text-gray-400 leading-relaxed">Réception de votre programme de rééducation sur application mobile. Vidéos démonstratives claires.</p>
-                        </div>
-                    </div>
-                     <!-- Step 3 -->
-                     <div class="flex gap-6 group">
-                        <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl font-bold text-brand-sand group-hover:bg-brand-terra group-hover:text-white group-hover:border-brand-terra transition-all duration-500">3</div>
-                        <div>
-                            <h4 class="text-xl font-bold text-white mb-2">Suivi & Ajustements</h4>
-                            <p class="text-gray-400 leading-relaxed">Communication via WhatsApp/App. On adapte la charge chaque semaine selon vos ressentis.</p>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-header font-bold text-white mb-3 tracking-wide">COMPÉTITION</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Préparation mentale et tactique de WOD. Arrive sur le floor avec un plan de bataille.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="temoignages" class="py-24 bg-white relative">
+    <section id="temoignages" class="py-24 bg-brand-dark border-y border-gray-900">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-brand-terra font-bold tracking-wide uppercase text-sm mb-2">Témoignages</h2>
-                <h3 class="text-4xl font-display font-bold text-brand-dark">Ils sont revenus plus forts.</h3>
+            <div class="mb-16 text-center">
+                <h2 class="text-3xl md:text-5xl font-header font-bold text-white">RÉSULTATS</h2>
             </div>
-
+            
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Review 1 -->
-                <div class="bg-brand-light p-8 rounded-3xl border border-brand-sand/30 hover:shadow-lg transition-shadow reveal">
-                    <div class="flex items-center gap-1 text-brand-terra mb-4">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <div class="bg-black p-8 border border-gray-800 relative">
+                    <div class="absolute top-0 right-0 p-4 opacity-20">
+                        <i data-lucide="quote" class="text-white w-8 h-8"></i>
                     </div>
-                    <p class="text-brand-dark italic mb-6 leading-relaxed">"J'ai traîné une douleur à l'épaule pendant 6 mois qui m'empêchait de snatcher. En 3 semaines de suivi avec Manon, j'ai pu reprendre la barre."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-full bg-brand-sand/50 flex items-center justify-center text-brand-dark font-bold">TL</div>
-                        <div>
-                            <p class="font-bold text-brand-dark text-sm">Thomas L.</p>
-                            <p class="text-brand-muted text-xs">CrossFit ® Athlete</p>
-                        </div>
+                    <div class="flex gap-1 mb-6">
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                    </div>
+                    <p class="text-gray-400 italic mb-6 font-light leading-relaxed">"Depuis que je suis la prog d'Anthoni, j'ai pris 15kg sur mon Back Squat. Une structure qui change tout."</p>
+                    <div>
+                        <h4 class="font-header font-bold text-white tracking-wider">THOMAS D.</h4>
+                        <span class="text-xs text-brand-gold font-bold uppercase">Athlète Intermédiaire</span>
                     </div>
                 </div>
 
                 <!-- Review 2 -->
-                <div class="bg-brand-light p-8 rounded-3xl border border-brand-sand/30 hover:shadow-lg transition-shadow reveal">
-                    <div class="flex items-center gap-1 text-brand-terra mb-4">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <div class="bg-black p-8 border border-gray-800 relative">
+                    <div class="absolute top-0 right-0 p-4 opacity-20">
+                        <i data-lucide="quote" class="text-white w-8 h-8"></i>
                     </div>
-                    <p class="text-brand-dark italic mb-6 leading-relaxed">"Le suivi à distance est incroyable. Les retours vidéos sont ultra précis. Je me sens plus forte et plus safe techniquement sur mes mouvements de gym."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-full bg-brand-sand/50 flex items-center justify-center text-brand-dark font-bold">SB</div>
-                        <div>
-                            <p class="font-bold text-brand-dark text-sm">Sarah B.</p>
-                            <p class="text-brand-muted text-xs">Gymnastique</p>
-                        </div>
+                    <div class="flex gap-1 mb-6">
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                    </div>
+                    <p class="text-gray-400 italic mb-6 font-light leading-relaxed">"Avec un emploi du temps chargé, Anthoni a su adapter le volume. Je progresse constamment."</p>
+                    <div>
+                        <h4 class="font-header font-bold text-white tracking-wider">SARAH L.</h4>
+                        <span class="text-xs text-brand-gold font-bold uppercase">RX Athlete</span>
                     </div>
                 </div>
 
                 <!-- Review 3 -->
-                <div class="bg-brand-light p-8 rounded-3xl border border-brand-sand/30 hover:shadow-lg transition-shadow reveal">
-                    <div class="flex items-center gap-1 text-brand-terra mb-4">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <div class="bg-black p-8 border border-gray-800 relative">
+                    <div class="absolute top-0 right-0 p-4 opacity-20">
+                        <i data-lucide="quote" class="text-white w-8 h-8"></i>
                     </div>
-                    <p class="text-brand-dark italic mb-6 leading-relaxed">"Enfin une kiné qui comprend que 'arrêter le sport' n'est pas une option. Manon a adapté mon volume pour que je puisse continuer à m'entraîner."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-full bg-brand-sand/50 flex items-center justify-center text-brand-dark font-bold">JM</div>
-                        <div>
-                            <p class="font-bold text-brand-dark text-sm">Julien M.</p>
-                            <p class="text-brand-muted text-xs">Haltérophilie</p>
-                        </div>
+                    <div class="flex gap-1 mb-6">
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
+                    </div>
+                    <p class="text-gray-400 italic mb-6 font-light leading-relaxed">"L'analyse vidéo est bluffante. Il voit des détails invisibles. Mon snatch est devenu fluide."</p>
+                    <div>
+                        <h4 class="font-header font-bold text-white tracking-wider">JULIEN M.</h4>
+                        <span class="text-xs text-brand-gold font-bold uppercase">Compétiteur</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- NEW 3: Instagram Feed Integration (Refined for Educational Content) -->
-    <section class="py-24 bg-brand-light border-t border-brand-sand/20">
+    <!-- Pricing Section -->
+    <section id="tarifs" class="py-24 bg-black">
         <div class="container mx-auto px-6">
-             <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
-                <div>
-                    <h2 class="text-brand-terra font-bold tracking-wide uppercase text-sm mb-2">Ressources Gratuites</h2>
-                    <h3 class="text-4xl font-display font-bold text-brand-dark">Conseils & Éducatifs.</h3>
-                    <p class="text-brand-muted mt-2">Retrouvez mes analyses et exercices correctifs sur Instagram.</p>
-                </div>
-                <a href="https://instagram.com/rebuild.by.m/" target="_blank" class="hidden md:flex items-center gap-2 text-brand-dark hover:text-brand-terra font-bold transition-colors">
-                    <i data-lucide="instagram" class="w-5 h-5"></i>
-                    Voir tous les posts
-                </a>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
-                <!-- Insta Post 1: Educational -->
-                <a href="#" class="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer block">
-                    <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=600&q=80" alt="Mobilité Hanche" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
-                        <span class="text-white font-bold text-sm md:text-base">Mobilité Hanche</span>
-                        <span class="text-brand-sand text-xs hidden group-hover:block transition-all">Voir l'exercice</span>
-                    </div>
-                </a>
-                <!-- Insta Post 2: Educational -->
-                 <a href="#" class="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer block">
-                    <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=600&q=80" alt="Correction Squat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
-                        <span class="text-white font-bold text-sm md:text-base">Correction Squat</span>
-                        <span class="text-brand-sand text-xs hidden group-hover:block transition-all">Analyse technique</span>
-                    </div>
-                </a>
-                <!-- Insta Post 3: Educational -->
-                 <a href="#" class="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer block">
-                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Douleur Épaule" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
-                        <span class="text-white font-bold text-sm md:text-base">Douleur Épaule ?</span>
-                        <span class="text-brand-sand text-xs hidden group-hover:block transition-all">Comprendre la cause</span>
-                    </div>
-                </a>
-                <!-- Insta Post 4: Educational -->
-                 <a href="#" class="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer block">
-                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=80" alt="Warm-up Routine" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
-                        <span class="text-white font-bold text-sm md:text-base">Warm-up Routine</span>
-                        <span class="text-brand-sand text-xs hidden group-hover:block transition-all">Avant le WOD</span>
-                    </div>
-                </a>
+            <div class="mb-16 text-center">
+                <span class="text-brand-gold font-header font-bold tracking-[0.2em] text-sm">INVESTISSEMENT</span>
+                <h2 class="text-3xl md:text-5xl font-header font-bold text-white mt-2">REJOINS L'ÉLITE</h2>
             </div>
             
-            <div class="mt-8 text-center md:hidden">
-                <a href="https://instagram.com/rebuild.by.m/" target="_blank" class="inline-flex items-center gap-2 text-brand-dark hover:text-brand-terra font-bold transition-colors">
-                    <i data-lucide="instagram" class="w-5 h-5"></i>
-                    Voir tous les posts
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW 2: FAQ Section -->
-    <section id="faq" class="py-24 bg-white">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-brand-terra font-bold tracking-wide uppercase text-sm mb-2">FAQ</h2>
-                <h3 class="text-3xl md:text-4xl font-display font-bold text-brand-dark">Questions fréquentes</h3>
-            </div>
-
-            <div class="space-y-4 reveal">
-                <!-- Question 1 -->
-                <details class="group bg-brand-light p-6 rounded-2xl border border-brand-sand/30 cursor-pointer">
-                    <summary class="flex justify-between items-center font-bold text-lg text-brand-dark">
-                        Le suivi est-il remboursé par la sécurité sociale ?
-                        <span class="transition group-open:rotate-180">
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-terra"></i>
-                        </span>
-                    </summary>
-                    <p class="text-brand-muted mt-4 leading-relaxed">
-                        Le suivi à distance est considéré comme une prestation de coaching sport-santé et de prévention. Il n'est donc pas pris en charge par la Sécurité Sociale. Cependant, une facture vous sera fournie car certaines mutuelles proposent des forfaits "Sport sur ordonnance" ou "Médecine douce".
-                    </p>
-                </details>
-
-                <!-- Question 2 -->
-                <details class="group bg-brand-light p-6 rounded-2xl border border-brand-sand/30 cursor-pointer">
-                    <summary class="flex justify-between items-center font-bold text-lg text-brand-dark">
-                        Ai-je besoin de matériel spécifique ?
-                        <span class="transition group-open:rotate-180">
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-terra"></i>
-                        </span>
-                    </summary>
-                    <p class="text-brand-muted mt-4 leading-relaxed">
-                        Pas nécessairement ! Le programme est 100% personnalisé. Si vous avez accès à une box de CrossFit, nous utiliserons ce matériel. Si vous êtes à la maison avec juste un élastique, nous adapterons les exercices en conséquence.
-                    </p>
-                </details>
-
-                <!-- Question 3 -->
-                <details class="group bg-brand-light p-6 rounded-2xl border border-brand-sand/30 cursor-pointer">
-                    <summary class="flex justify-between items-center font-bold text-lg text-brand-dark">
-                        Comment corriger mes mouvements à distance ?
-                        <span class="transition group-open:rotate-180">
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-terra"></i>
-                        </span>
-                    </summary>
-                    <p class="text-brand-muted mt-4 leading-relaxed">
-                        C'est tout l'intérêt de l'analyse vidéo. Vous m'envoyez vos vidéos via l'application. Je les analyse image par image et je vous renvoie une correction vidéo ou audio avec des consignes précises (ex: "pousse tes genoux vers l'extérieur"). C'est souvent plus efficace qu'une correction "en direct" car vous pouvez la revoir à volonté.
-                    </p>
-                </details>
-
-                <!-- Question 4 -->
-                 <details class="group bg-brand-light p-6 rounded-2xl border border-brand-sand/30 cursor-pointer">
-                    <summary class="flex justify-between items-center font-bold text-lg text-brand-dark">
-                        Combien de temps dure le suivi ?
-                        <span class="transition group-open:rotate-180">
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-terra"></i>
-                        </span>
-                    </summary>
-                    <p class="text-brand-muted mt-4 leading-relaxed">
-                        Cela dépend de votre pathologie et de vos objectifs. Pour une réathlétisation complète, comptez généralement entre 3 et 6 mois. Cependant, l'engagement minimum est d'un mois, sans obligation de renouvellement.
-                    </p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Block Section (Updated for Google Form) -->
-    <section id="contact" class="py-24 bg-brand-light border-t border-brand-sand/20">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-start">
+            <div class="flex flex-col lg:flex-row justify-center items-stretch gap-8 max-w-5xl mx-auto">
                 
-                <!-- Contact Text -->
-                <div class="space-y-8 sticky top-32 reveal">
-                    <h2 class="text-brand-terra font-bold tracking-wide uppercase text-sm">Me Contacter</h2>
-                    <h3 class="text-4xl md:text-5xl font-display font-bold text-brand-dark leading-tight">
-                        Prêt(e) à <span class="text-brand-terra">reconstruire</span> vos fondations ?
-                    </h3>
-                    <p class="text-brand-muted text-lg leading-relaxed">
-                        N'attendez pas que la douleur s'installe. Cliquez ci-dessous pour remplir le formulaire détaillé, et Manon vous recontactera personnellement sous 48h.
-                    </p>
-                    
-                    <div class="space-y-6 pt-4">
-                        <div class="flex items-center gap-4 group">
-                            <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-terra group-hover:bg-brand-terra group-hover:text-white transition-all">
-                                <i data-lucide="mail" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-brand-muted">Email</p>
-                                <a href="mailto:contact@rebuildbym.com" class="font-bold text-brand-dark text-lg hover:text-brand-terra transition-colors">contact@rebuildbym.com</a>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4 group">
-                            <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-terra group-hover:bg-brand-terra group-hover:text-white transition-all">
-                                <i data-lucide="instagram" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-brand-muted">Instagram</p>
-                                <a href="https://instagram.com/rebuild.by.m/" target="_blank" class="font-bold text-brand-dark text-lg hover:text-brand-terra transition-colors">@rebuild.by.m</a>
-                            </div>
-                        </div>
+                <!-- Plan Performance -->
+                <div class="flex-1 bg-brand-panel border border-gray-800 p-10 flex flex-col hover:border-gray-600 transition-colors">
+                    <h3 class="text-2xl font-header font-bold text-white mb-2">PERFORMANCE</h3>
+                    <div class="flex items-baseline mb-8">
+                        <span class="text-5xl font-header font-bold text-brand-gold">89€</span>
+                        <span class="text-gray-500 ml-2">/mois</span>
                     </div>
-                </div>
-
-                <!-- Google Form CTA (New layout) -->
-                <div class="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-xl shadow-brand-dark/5 border border-brand-sand/20 text-center reveal">
-                    <div class="w-20 h-20 mx-auto mb-6 bg-brand-terra/10 rounded-full flex items-center justify-center text-brand-terra">
-                        <i data-lucide="clipboard-list" class="w-10 h-10"></i>
-                    </div>
-                    <h4 class="text-2xl font-display font-bold text-brand-dark mb-3">Formulaire de Bilan Initial</h4>
-                    <p class="text-brand-muted mb-8">
-                        Remplissez le formulaire détaillé (santé, historique, objectifs) pour que Manon puisse préparer au mieux notre premier échange.
-                    </p>
                     
-                    <!-- Simulating Google Form link -->
-                    <a href="https://docs.google.com/forms/d/e/SimulatedGoogleFormLink/viewform" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-brand-terra hover:bg-brand-dark text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-brand-terra/20">
-                        Accéder au Google Form
-                        <i data-lucide="send" class="w-4 h-4"></i>
+                    <ul class="space-y-5 mb-10 flex-1 text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
+                            Programmation 100% personnalisée
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
+                            3 à 5 séances par semaine
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
+                            Feedback vidéo hebdomadaire
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
+                            Support WhatsApp 7j/7
+                        </li>
+                    </ul>
+                    
+                    <a href="#contact" class="w-full block text-center border border-white text-white py-4 font-header font-bold hover:bg-white hover:text-black transition-all tracking-widest uppercase">
+                        CHOISIR
                     </a>
-                    <p class="text-xs text-brand-muted mt-4">Ouverture dans un nouvel onglet.</p>
+                </div>
+
+                <!-- Plan Elite -->
+                <div class="flex-1 bg-gradient-to-b from-gray-900 to-black border border-brand-gold p-10 flex flex-col relative">
+                    <div class="absolute top-0 right-0 bg-brand-gold text-black text-xs font-bold px-3 py-1 font-header tracking-widest uppercase">
+                        Recommandé
+                    </div>
+                    
+                    <h3 class="text-2xl font-header font-bold text-white mb-2">ELITE</h3>
+                    <div class="flex items-baseline mb-8">
+                        <span class="text-5xl font-header font-bold text-brand-gold">129€</span>
+                        <span class="text-gray-500 ml-2">/mois</span>
+                    </div>
+                    
+                    <ul class="space-y-5 mb-10 flex-1 text-gray-300 font-medium">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="plus" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
+                            <strong>Tout du pack Performance</strong>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
+                            Suivi Nutritionnel complet
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
+                            Appels de coaching mensuels
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="text-brand-gold flex-shrink-0 w-5 h-5"></i>
+                            Analyse vidéo illimitée
+                        </li>
+                    </ul>
+                    
+                    <a href="#contact" class="w-full block text-center bg-brand-gold text-black py-4 font-header font-bold hover:bg-white transition-all tracking-widest uppercase">
+                        CHOISIR ELITE
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer (Simplified) -->
-    <footer class="bg-white border-t border-brand-sand/20 py-12">
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-brand-dark">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <a href="#" class="flex items-center gap-3 group">
-                    <div class="bg-brand-terra text-white p-2 rounded-xl">
-                        <i data-lucide="activity" class="w-5 h-5"></i>
-                     </div>
-                    <span class="text-xl font-display font-bold tracking-tight text-brand-dark lowercase">
-                        rebuild<span class="text-brand-terra">.</span>by<span class="text-brand-terra">.</span>m
-                    </span>
-                </a>
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row border border-gray-800">
                 
-                <div class="text-sm text-brand-muted text-center md:text-right">
-                    <p class="mb-2">&copy; <span id="year"></span> Rebuild by Mouvement. Tous droits réservés.</p>
-                    <div class="flex gap-6 justify-center md:justify-end">
-                        <a href="#" class="hover:text-brand-terra transition-colors">Mentions Légales</a>
-                        <a href="#" class="hover:text-brand-terra transition-colors">Politique de confidentialité</a>
-                        <a href="#" class="hover:text-brand-terra transition-colors">CGV</a>
+                <!-- Contact Info Side -->
+                <div class="md:w-2/5 bg-black p-12 border-r border-gray-800 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-3xl font-header font-bold text-white mb-8">COMMENCER</h3>
+                        <p class="text-gray-400 mb-10 font-light leading-relaxed">
+                            Remplis le formulaire. Pas de spam, juste du coaching.
+                        </p>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-center gap-4 group">
+                                <div class="p-3 border border-gray-800 group-hover:border-brand-gold transition-colors">
+                                    <i data-lucide="mail" class="text-brand-gold w-5 h-5"></i>
+                                </div>
+                                <span class="font-header tracking-wide text-gray-300 text-sm">contact@anthoniperez.com</span>
+                            </div>
+                            <div class="flex items-center gap-4 group">
+                                <div class="p-3 border border-gray-800 group-hover:border-brand-gold transition-colors">
+                                    <i data-lucide="instagram" class="text-brand-gold w-5 h-5"></i>
+                                </div>
+                                <span class="font-header tracking-wide text-gray-300 text-sm">@anthoni.perez_coach</span>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+                <!-- Form Side -->
+                <div class="md:w-3/5 p-12 bg-brand-panel relative">
+                    <!-- Success Message -->
+                    <div id="success-message" class="hidden absolute inset-0 bg-brand-panel flex-col items-center justify-center text-center p-10 z-10">
+                        <i data-lucide="check-circle" class="w-16 h-16 text-brand-gold mb-6"></i>
+                        <h3 class="text-2xl font-header font-bold text-white mb-2">REÇU.</h3>
+                        <p class="text-gray-400">Je reviens vers toi sous 24h.</p>
+                    </div>
+
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="col-span-2 md:col-span-1">
+                                <label class="block text-xs font-bold uppercase text-brand-gold tracking-widest mb-2">Prénom</label>
+                                <input type="text" required class="w-full bg-black border border-gray-800 p-4 text-white focus:outline-none focus:border-brand-gold transition-colors placeholder-gray-700 font-sans" placeholder="PRÉNOM" />
+                            </div>
+                            <div class="col-span-2 md:col-span-1">
+                                <label class="block text-xs font-bold uppercase text-brand-gold tracking-widest mb-2">Nom</label>
+                                <input type="text" required class="w-full bg-black border border-gray-800 p-4 text-white focus:outline-none focus:border-brand-gold transition-colors placeholder-gray-700 font-sans" placeholder="NOM" />
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-brand-gold tracking-widest mb-2">Email</label>
+                            <input type="email" required class="w-full bg-black border border-gray-800 p-4 text-white focus:outline-none focus:border-brand-gold transition-colors placeholder-gray-700 font-sans" placeholder="EMAIL" />
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-brand-gold tracking-widest mb-2">Objectif</label>
+                            <div class="relative">
+                                <select class="w-full bg-black border border-gray-800 p-4 text-white focus:outline-none focus:border-brand-gold transition-colors appearance-none font-sans">
+                                    <option>Performance (Compétition)</option>
+                                    <option>Prise de force</option>
+                                    <option>Gymnastique</option>
+                                    <option>Remise en forme</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white">
+                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-brand-gold tracking-widest mb-2">Message</label>
+                            <textarea rows="4" class="w-full bg-black border border-gray-800 p-4 text-white focus:outline-none focus:border-brand-gold transition-colors placeholder-gray-700 font-sans" placeholder="Tes objectifs, ton expérience..."></textarea>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="w-full bg-brand-gold text-black font-header font-bold text-lg py-4 hover:bg-white transition-all tracking-widest uppercase mt-4">
+                           <span>ENVOYER</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-gray-900">
+        <div class="container mx-auto px-6 text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-2xl font-header font-bold text-white tracking-widest flex items-center justify-center md:justify-start gap-2 mb-2">
+                        <i data-lucide="dumbbell" class="text-brand-gold w-6 h-6"></i>
+                        ANTHONI<span class="text-brand-gold">PEREZ</span>
+                    </div>
+                    <p class="text-gray-600 text-xs tracking-widest uppercase">Coaching Individuel & Programmation</p>
+                </div>
+                
+                <div class="flex gap-6 mb-6 md:mb-0">
+                    <a href="#" class="text-gray-600 hover:text-brand-gold transition-colors"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-brand-gold transition-colors"><i data-lucide="mail"></i></a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-900 mt-8 pt-8 flex flex-col md:flex-row justify-between text-gray-700 text-xs font-header tracking-wider">
+                <p>&copy; 2024 ANTHONI PEREZ.</p>
+                <div class="flex gap-4 justify-center md:justify-start mt-4 md:mt-0">
+                    <a href="#" class="hover:text-gray-500">LÉGAL</a>
+                    <a href="#" class="hover:text-gray-500">CGV</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Scripts JS -->
     <script>
         lucide.createIcons();
-        document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Mobile Menu
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-            const isOpen = mobileMenu.classList.contains('flex');
-            menuBtn.innerHTML = isOpen ? '<i data-lucide="x" class="w-7 h-7"></i>' : '<i data-lucide="menu" class="w-7 h-7"></i>';
-            lucide.createIcons();
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
-                menuBtn.innerHTML = '<i data-lucide="menu" class="w-7 h-7"></i>';
-                lucide.createIcons();
-            });
-        });
-
-        // Navbar Scroll
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-3');
-                navbar.classList.remove('py-6');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-black/95', 'backdrop-blur-sm', 'border-gray-900');
+                navbar.classList.remove('border-transparent', 'py-6');
+                navbar.classList.add('py-4');
             } else {
-                navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-3');
-                navbar.classList.add('py-6');
+                navbar.classList.remove('bg-black/95', 'backdrop-blur-sm', 'border-gray-900', 'py-4');
+                navbar.classList.add('border-transparent', 'py-6');
             }
         });
 
-        // Scroll Reveal Observer
-        const revealElements = document.querySelectorAll('.reveal');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
 
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    revealObserver.unobserve(entry.target); // Trigger only once
-                }
-            });
-        }, {
-            threshold: 0.1 // Trigger when 10% of element is visible
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+                menuIcon.setAttribute('data-lucide', 'x');
+                navbar.classList.add('bg-black');
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                menuIcon.setAttribute('data-lucide', 'menu');
+                if(window.scrollY <= 50) navbar.classList.remove('bg-black');
+            }
+            lucide.createIcons();
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => { if(isMenuOpen) toggleMenu(); });
         });
 
-        revealElements.forEach(el => revealObserver.observe(el));
+        const form = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = submitBtn.querySelector('span');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            btnText.textContent = 'ENVOI...';
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            setTimeout(() => {
+                form.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+                successMessage.classList.add('flex');
+                setTimeout(() => {
+                    form.reset();
+                    form.classList.remove('hidden');
+                    successMessage.classList.add('hidden');
+                    successMessage.classList.remove('flex');
+                    btnText.textContent = 'ENVOYER';
+                    submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }, 5000);
+            }, 1500);
+        });
     </script>
 </body>
 </html>
